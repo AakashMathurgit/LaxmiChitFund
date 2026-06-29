@@ -1,0 +1,15 @@
+Date: 9/3/2026
+Time: 19:27
+Phone Number: +917023760193
+Message: *******************************SELL SIGNAL* BEMLDate: 2026-03-09Confidence: 90%Prob Up 5d: 10%Market: bear_trend | Vol: high*Bull Case* (55%): + RSI at 31 indicates the stock is oversold, suggesting a potential short-term reb + Forward PE has dropped to 27.3 from a trailing PE of 52.7, reflecting expected e*Bear Case* (85%): - Extremely high PE ratio of 52.7 (forward PE 27.3) signals significant overvaluat - Debt/Equity ratio is alarmingly high at 23.79, indicating substantial financial *Final*: SELL (95% conf, agreement=Yes)*Risk*: very_low_LCF Trading System_******************************
+--------------------
+Date: 9/3/2026
+Time: 19:27
+Phone Number: +917023760193
+Message: *******************************SELL SIGNAL* BPCLDate: 2026-03-09Confidence: 63%Prob Up 5d: 37%Market: bear_trend | Vol: high*Bull Case* (70%): + BPCL is trading at a deeply undervalued PE of 5.7 and Forward PE of 6.9, with a + The stock has experienced a sharp pullback (-6.12% day change) and is now overso*Bear Case* (80%): - Sharp price decline of -6.12% today, with price falling from recent highs (52-we - Extremely high debt-to-equity ratio (D/E=56.39) signals significant balance shee*Final*: SELL (54% conf, agreement=No)*Risk*: very_low_LCF Trading System_******************************
+--------------------
+Date: 9/3/2026
+Time: 19:27
+Phone Number: +917023760193
+Message: ==============================*LCF Daily Report*Mode: MOMENTUMTime: 2026-03-09 19:27Stocks analyzed: 3==============================*SELL Signals (2)*: BEML (90%) BPCL (63%)*HOLD (1)*: ABBMarket: bear_trend | Vol: high_LCF Trading System_
+--------------------

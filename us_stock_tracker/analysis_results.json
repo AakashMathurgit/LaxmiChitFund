@@ -1,0 +1,1344 @@
+{
+  "timestamp": "2026-06-29T15:57:11.813665",
+  "market": "US",
+  "mode": "adaptive",
+  "source": "auto",
+  "symbols_analyzed": 10,
+  "symbols": [
+    "NVDA",
+    "TSLA",
+    "AAPL",
+    "MSFT",
+    "AMZN",
+    "ISRG",
+    "ABBV",
+    "MRK",
+    "PLUG",
+    "IONQ"
+  ],
+  "buy_count": 0,
+  "hold_count": 5,
+  "sell_count": 5,
+  "results": [
+    {
+      "symbol": "NVDA",
+      "date": "2026-06-26",
+      "technical": {
+        "success": true,
+        "run_id": "0ecc6895-e337-4407-9eac-05e1ad336cef",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728816837,
+          "completed_epoch_ms": 1782728816838,
+          "duration_ms": 1
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "cbae0036fd2fbcc1441bef7e0cd8ebf14617477c2f9dde0648dbff93b49841c8",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "tech_score": 0.3655,
+            "tech_rsi": 0.3873,
+            "tech_macd": 0.0,
+            "tech_volatility": 0.0349,
+            "tech_breakout": 0.0,
+            "tech_trend": 1.0
+          },
+          "raw_signal": "TechnicalSignal(technical_score=0.3655, rsi=38.73, macd_signal='sell', volatility=0.0349, breakout_flag=False, trend_direction='bullish', support_level=191.22, resistance_level=232.01)"
+        }
+      },
+      "fundamental": {
+        "success": true,
+        "run_id": "0ecc6895-e337-4407-9eac-05e1ad336cef",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728816838,
+          "completed_epoch_ms": 1782728816838,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "28642fc5bcf2e2e41f043c29d1b02015ac020413332988abbbb194314a7379e1",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "fund_score": 0.63,
+            "fund_valuation": 0.0,
+            "fund_growth": 1.0,
+            "fund_health": 0.7
+          },
+          "raw_signal": "FundamentalSignal(fundamental_score=0.63, valuation_label='overvalued', growth_score=1.0, financial_health_score=0.7, pe_ratio=29.48392, forward_pe=15.125293)"
+        }
+      },
+      "sentiment": {
+        "success": true,
+        "run_id": "0ecc6895-e337-4407-9eac-05e1ad336cef",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728816838,
+          "completed_epoch_ms": 1782728818756,
+          "duration_ms": 1918
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "bd15ddffcf6bf2d7652c5e518873c48bee91e896aad1e79a2afad0c19baeae82",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "sent_score": 0.5,
+            "sent_net_ratio": 0.0,
+            "sent_trend": 0.5,
+            "sent_confidence": 0.0
+          },
+          "raw_signal": "SentimentSignal(sentiment_score=0.5, positive_news_count=0, negative_news_count=0, sentiment_trend='stable', news_confidence_score=0.0)"
+        }
+      },
+      "event": {
+        "success": true,
+        "run_id": "0ecc6895-e337-4407-9eac-05e1ad336cef",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728818756,
+          "completed_epoch_ms": 1782728818756,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "c57003e8a7f83208e4aca26d9cd2397e8785e8b7254e68c492635326eabf10d8",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "evt_score": 0.3503,
+            "evt_earnings": 0.0,
+            "evt_risk": 1.0,
+            "evt_gap_up": 0.0,
+            "evt_gap_down": 0.0
+          },
+          "raw_signal": "EventSignal(event_score=0.3503, earnings_impact_flag=False, event_risk_level='high', gap_up_flag=False, gap_down_flag=False, event_type=None, event_description=None)"
+        }
+      },
+      "judge_decision": {
+        "success": true,
+        "run_id": "0ecc6895-e337-4407-9eac-05e1ad336cef",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728818756,
+          "completed_epoch_ms": 1782728818756,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "d905a1a76d2f6b5fd2f95036f424b30c5559fc83292d97212353fd147bb30ba5",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "decision": "HOLD",
+          "prob_up_5d": 0.4114,
+          "expected_return_5d": -0.008856,
+          "downside_risk_prob": 0.5886,
+          "confidence": 0.5886,
+          "position_size_pct": 0.0,
+          "raw_decision": "JudgeDecision(symbol='NVDA', date='2026-06-26', decision='HOLD', prob_up_5d=0.4114, expected_return_5d=-0.008856, downside_risk_prob=0.5886, confidence=0.5886, position_size_pct=0.0, stop_loss_pct=-0.03, take_profit_pct=0.06, reasoning=None, feature_importances={})"
+        }
+      }
+    },
+    {
+      "symbol": "TSLA",
+      "date": "2026-06-26",
+      "technical": {
+        "success": true,
+        "run_id": "aba6b286-32b5-4b7b-9119-b49759d222e7",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728819220,
+          "completed_epoch_ms": 1782728819220,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "b381aa505bd9c08b0429eebec76bb6fd098309aee49ef8aafdbbcddab73c2fa6",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "tech_score": 0.1181,
+            "tech_rsi": 0.4575,
+            "tech_macd": 0.0,
+            "tech_volatility": 0.0467,
+            "tech_breakout": 0.0,
+            "tech_trend": 0.0
+          },
+          "raw_signal": "TechnicalSignal(technical_score=0.1181, rsi=45.75, macd_signal='sell', volatility=0.0467, breakout_flag=False, trend_direction='bearish', support_level=368.6, resistance_level=441.07)"
+        }
+      },
+      "fundamental": {
+        "success": true,
+        "run_id": "aba6b286-32b5-4b7b-9119-b49759d222e7",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728819220,
+          "completed_epoch_ms": 1782728819220,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "6f6cb4d1db86c3d0a1a4b443a32c353c14d0de5c2136af4151712f9308feb5ba",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "fund_score": 0.2811,
+            "fund_valuation": 0.0,
+            "fund_growth": 0.516,
+            "fund_health": 0.1016
+          },
+          "raw_signal": "FundamentalSignal(fundamental_score=0.2811, valuation_label='overvalued', growth_score=0.516, financial_health_score=0.1016, pe_ratio=345.1909, forward_pe=151.75896)"
+        }
+      },
+      "sentiment": {
+        "success": true,
+        "run_id": "aba6b286-32b5-4b7b-9119-b49759d222e7",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728819220,
+          "completed_epoch_ms": 1782728820018,
+          "duration_ms": 798
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "bd15ddffcf6bf2d7652c5e518873c48bee91e896aad1e79a2afad0c19baeae82",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "sent_score": 0.5,
+            "sent_net_ratio": 0.0,
+            "sent_trend": 0.5,
+            "sent_confidence": 0.0
+          },
+          "raw_signal": "SentimentSignal(sentiment_score=0.5, positive_news_count=0, negative_news_count=0, sentiment_trend='stable', news_confidence_score=0.0)"
+        }
+      },
+      "event": {
+        "success": true,
+        "run_id": "aba6b286-32b5-4b7b-9119-b49759d222e7",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728820018,
+          "completed_epoch_ms": 1782728820018,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "614e9e7e2c62f383009e27f1c5edc0c0d41d718903bd81424c7ef9c268a0b40c",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "evt_score": 0.2295,
+            "evt_earnings": 0.0,
+            "evt_risk": 0.5,
+            "evt_gap_up": 0.0,
+            "evt_gap_down": 0.0
+          },
+          "raw_signal": "EventSignal(event_score=0.2295, earnings_impact_flag=False, event_risk_level='medium', gap_up_flag=False, gap_down_flag=False, event_type=None, event_description=None)"
+        }
+      },
+      "judge_decision": {
+        "success": true,
+        "run_id": "aba6b286-32b5-4b7b-9119-b49759d222e7",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728820018,
+          "completed_epoch_ms": 1782728820018,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "3e4a97aac7879e1fb2cc023019dc70ba01b415523658eab4d4f6a064d153c0e2",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "decision": "SELL",
+          "prob_up_5d": 0.1711,
+          "expected_return_5d": -0.03289,
+          "downside_risk_prob": 0.8289,
+          "confidence": 0.8289,
+          "position_size_pct": 0.0,
+          "raw_decision": "JudgeDecision(symbol='TSLA', date='2026-06-26', decision='SELL', prob_up_5d=0.1711, expected_return_5d=-0.03289, downside_risk_prob=0.8289, confidence=0.8289, position_size_pct=0.0, stop_loss_pct=-0.03, take_profit_pct=0.06, reasoning=None, feature_importances={})"
+        }
+      }
+    },
+    {
+      "symbol": "AAPL",
+      "date": "2026-06-26",
+      "technical": {
+        "success": true,
+        "run_id": "e46b1949-52b8-4018-a799-139735abb8cb",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728820816,
+          "completed_epoch_ms": 1782728820816,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "7cf1f98814c1cac3d5f167bd5312130e186e1a289f167f4e567c5271c1cd6e06",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "tech_score": 0.3261,
+            "tech_rsi": 0.3348,
+            "tech_macd": 0.0,
+            "tech_volatility": 0.0325,
+            "tech_breakout": 0.0,
+            "tech_trend": 1.0
+          },
+          "raw_signal": "TechnicalSignal(technical_score=0.3261, rsi=33.48, macd_signal='sell', volatility=0.0325, breakout_flag=False, trend_direction='bullish', support_level=273.75, resistance_level=317.4)"
+        }
+      },
+      "fundamental": {
+        "success": true,
+        "run_id": "e46b1949-52b8-4018-a799-139735abb8cb",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728820817,
+          "completed_epoch_ms": 1782728820817,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "14fae8a3b486fff397d306225c3e5ae14fabe7b2b403d0f4b10fd184d40f5a68",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "fund_score": 0.4548,
+            "fund_valuation": 0.0,
+            "fund_growth": 0.532,
+            "fund_health": 0.662
+          },
+          "raw_signal": "FundamentalSignal(fundamental_score=0.4548, valuation_label='overvalued', growth_score=0.532, financial_health_score=0.662, pe_ratio=34.35593, forward_pe=29.532974)"
+        }
+      },
+      "sentiment": {
+        "success": true,
+        "run_id": "e46b1949-52b8-4018-a799-139735abb8cb",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728820817,
+          "completed_epoch_ms": 1782728821605,
+          "duration_ms": 788
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "bd15ddffcf6bf2d7652c5e518873c48bee91e896aad1e79a2afad0c19baeae82",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "sent_score": 0.5,
+            "sent_net_ratio": 0.0,
+            "sent_trend": 0.5,
+            "sent_confidence": 0.0
+          },
+          "raw_signal": "SentimentSignal(sentiment_score=0.5, positive_news_count=0, negative_news_count=0, sentiment_trend='stable', news_confidence_score=0.0)"
+        }
+      },
+      "event": {
+        "success": true,
+        "run_id": "e46b1949-52b8-4018-a799-139735abb8cb",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728821605,
+          "completed_epoch_ms": 1782728821605,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "74116c374b7fc4a012bc5184e45ea121184468d4c1030c34c1349a28467bb14f",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "evt_score": 0.2733,
+            "evt_earnings": 0.0,
+            "evt_risk": 1.0,
+            "evt_gap_up": 0.0,
+            "evt_gap_down": 0.0
+          },
+          "raw_signal": "EventSignal(event_score=0.2733, earnings_impact_flag=False, event_risk_level='high', gap_up_flag=False, gap_down_flag=False, event_type=None, event_description=None)"
+        }
+      },
+      "judge_decision": {
+        "success": true,
+        "run_id": "e46b1949-52b8-4018-a799-139735abb8cb",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728821605,
+          "completed_epoch_ms": 1782728821605,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "2d4b320e3e6f7283a9af4b058bcce55c5526a5818b56b796f17ffb8334d752a3",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "decision": "HOLD",
+          "prob_up_5d": 0.3546,
+          "expected_return_5d": -0.014541,
+          "downside_risk_prob": 0.6454,
+          "confidence": 0.6454,
+          "position_size_pct": 0.0,
+          "raw_decision": "JudgeDecision(symbol='AAPL', date='2026-06-26', decision='HOLD', prob_up_5d=0.3546, expected_return_5d=-0.014541, downside_risk_prob=0.6454, confidence=0.6454, position_size_pct=0.0, stop_loss_pct=-0.03, take_profit_pct=0.06, reasoning=None, feature_importances={})"
+        }
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "date": "2026-06-26",
+      "technical": {
+        "success": true,
+        "run_id": "570ec124-a947-4031-8cfd-997d41e40dad",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728822667,
+          "completed_epoch_ms": 1782728822667,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "6b12bac2eaf543dcaa289b14829af09e80ce68d3d0de9117ed3bcd54e4b41620",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "tech_score": 0.0099,
+            "tech_rsi": 0.3132,
+            "tech_macd": 0.0,
+            "tech_volatility": 0.0337,
+            "tech_breakout": 0.0,
+            "tech_trend": 0.0
+          },
+          "raw_signal": "TechnicalSignal(technical_score=0.0099, rsi=31.32, macd_signal='sell', volatility=0.0337, breakout_flag=False, trend_direction='bearish', support_level=349.2, resistance_level=466.32)"
+        }
+      },
+      "fundamental": {
+        "success": true,
+        "run_id": "570ec124-a947-4031-8cfd-997d41e40dad",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728822667,
+          "completed_epoch_ms": 1782728822667,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "1ee3595f0e4c4a0d4ea465a5e54670b6b37a8f8de06029ac93c025dfae01d469",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "fund_score": 0.6181,
+            "fund_valuation": 0.5,
+            "fund_growth": 0.566,
+            "fund_health": 0.7
+          },
+          "raw_signal": "FundamentalSignal(fundamental_score=0.6181, valuation_label='fair', growth_score=0.566, financial_health_score=0.7, pe_ratio=22.227055, forward_pe=19.256187)"
+        }
+      },
+      "sentiment": {
+        "success": true,
+        "run_id": "570ec124-a947-4031-8cfd-997d41e40dad",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728822667,
+          "completed_epoch_ms": 1782728823439,
+          "duration_ms": 772
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "bd15ddffcf6bf2d7652c5e518873c48bee91e896aad1e79a2afad0c19baeae82",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "sent_score": 0.5,
+            "sent_net_ratio": 0.0,
+            "sent_trend": 0.5,
+            "sent_confidence": 0.0
+          },
+          "raw_signal": "SentimentSignal(sentiment_score=0.5, positive_news_count=0, negative_news_count=0, sentiment_trend='stable', news_confidence_score=0.0)"
+        }
+      },
+      "event": {
+        "success": true,
+        "run_id": "570ec124-a947-4031-8cfd-997d41e40dad",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728823439,
+          "completed_epoch_ms": 1782728823439,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "4cc99caf107a9c66d907591429ece7be7a6fb2219e6b4a7d715e8dadca0d40d5",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "evt_score": 0.3435,
+            "evt_earnings": 0.0,
+            "evt_risk": 1.0,
+            "evt_gap_up": 0.0,
+            "evt_gap_down": 0.0
+          },
+          "raw_signal": "EventSignal(event_score=0.3435, earnings_impact_flag=False, event_risk_level='high', gap_up_flag=False, gap_down_flag=False, event_type=None, event_description=None)"
+        }
+      },
+      "judge_decision": {
+        "success": true,
+        "run_id": "570ec124-a947-4031-8cfd-997d41e40dad",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728823439,
+          "completed_epoch_ms": 1782728823439,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "06200c6b81d08e30cad497af571a75911f22ba5bdccdc0b457494f22923b370f",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "decision": "SELL",
+          "prob_up_5d": 0.2346,
+          "expected_return_5d": -0.026543,
+          "downside_risk_prob": 0.7654,
+          "confidence": 0.7654,
+          "position_size_pct": 0.0,
+          "raw_decision": "JudgeDecision(symbol='MSFT', date='2026-06-26', decision='SELL', prob_up_5d=0.2346, expected_return_5d=-0.026543, downside_risk_prob=0.7654, confidence=0.7654, position_size_pct=0.0, stop_loss_pct=-0.03, take_profit_pct=0.06, reasoning=None, feature_importances={})"
+        }
+      }
+    },
+    {
+      "symbol": "AMZN",
+      "date": "2026-06-26",
+      "technical": {
+        "success": true,
+        "run_id": "954f9490-ed8d-475b-838e-f366b6aef375",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728823981,
+          "completed_epoch_ms": 1782728823982,
+          "duration_ms": 1
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "461633763773bb1569698d4ee746675d6efefeb4c9882182256970bfe7a2c22d",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "tech_score": 0.0711,
+            "tech_rsi": 0.3948,
+            "tech_macd": 0.0,
+            "tech_volatility": 0.0355,
+            "tech_breakout": 0.0,
+            "tech_trend": 0.0
+          },
+          "raw_signal": "TechnicalSignal(technical_score=0.0711, rsi=39.48, macd_signal='sell', volatility=0.0355, breakout_flag=False, trend_direction='bearish', support_level=225.55, resistance_level=274.75)"
+        }
+      },
+      "fundamental": {
+        "success": true,
+        "run_id": "954f9490-ed8d-475b-838e-f366b6aef375",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728823982,
+          "completed_epoch_ms": 1782728823982,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "53049163a5d1539f63114b2ef9ee0d99325377e332ca250708783d506766a0da",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "fund_score": 0.3779,
+            "fund_valuation": 0.0,
+            "fund_growth": 0.532,
+            "fund_health": 0.4058
+          },
+          "raw_signal": "FundamentalSignal(fundamental_score=0.3779, valuation_label='overvalued', growth_score=0.532, financial_health_score=0.4058, pe_ratio=31.658504, forward_pe=23.550333)"
+        }
+      },
+      "sentiment": {
+        "success": true,
+        "run_id": "954f9490-ed8d-475b-838e-f366b6aef375",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728823982,
+          "completed_epoch_ms": 1782728824699,
+          "duration_ms": 717
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "bd15ddffcf6bf2d7652c5e518873c48bee91e896aad1e79a2afad0c19baeae82",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "sent_score": 0.5,
+            "sent_net_ratio": 0.0,
+            "sent_trend": 0.5,
+            "sent_confidence": 0.0
+          },
+          "raw_signal": "SentimentSignal(sentiment_score=0.5, positive_news_count=0, negative_news_count=0, sentiment_trend='stable', news_confidence_score=0.0)"
+        }
+      },
+      "event": {
+        "success": true,
+        "run_id": "954f9490-ed8d-475b-838e-f366b6aef375",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728824699,
+          "completed_epoch_ms": 1782728824699,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "2278e0497beefa840ce9d6d8425e9c938fa29b9679e7c23b185045d52b5c5654",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "evt_score": 0.1553,
+            "evt_earnings": 0.0,
+            "evt_risk": 0.5,
+            "evt_gap_up": 0.0,
+            "evt_gap_down": 0.0
+          },
+          "raw_signal": "EventSignal(event_score=0.1553, earnings_impact_flag=False, event_risk_level='medium', gap_up_flag=False, gap_down_flag=False, event_type=None, event_description=None)"
+        }
+      },
+      "judge_decision": {
+        "success": true,
+        "run_id": "954f9490-ed8d-475b-838e-f366b6aef375",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728824699,
+          "completed_epoch_ms": 1782728824699,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "6c8c08bd0e88b748ed7d1685544a633f76cf4fb6be1a7b80b1cff90c8084c304",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "decision": "SELL",
+          "prob_up_5d": 0.1872,
+          "expected_return_5d": -0.031278,
+          "downside_risk_prob": 0.8128,
+          "confidence": 0.8128,
+          "position_size_pct": 0.0,
+          "raw_decision": "JudgeDecision(symbol='AMZN', date='2026-06-26', decision='SELL', prob_up_5d=0.1872, expected_return_5d=-0.031278, downside_risk_prob=0.8128, confidence=0.8128, position_size_pct=0.0, stop_loss_pct=-0.03, take_profit_pct=0.06, reasoning=None, feature_importances={})"
+        }
+      }
+    },
+    {
+      "symbol": "ISRG",
+      "date": "2026-06-26",
+      "technical": {
+        "success": true,
+        "run_id": "6a46c1a8-6d2f-427b-993c-e30b2e2ec787",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728825228,
+          "completed_epoch_ms": 1782728825228,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "9a9dfe33a67069a67139f1ca34661b268296f6100978e988aeeba78b751e5d34",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "tech_score": 0.0526,
+            "tech_rsi": 0.3701,
+            "tech_macd": 0.0,
+            "tech_volatility": 0.0277,
+            "tech_breakout": 0.0,
+            "tech_trend": 0.0
+          },
+          "raw_signal": "TechnicalSignal(technical_score=0.0526, rsi=37.01, macd_signal='sell', volatility=0.0277, breakout_flag=False, trend_direction='bearish', support_level=396.68, resistance_level=430.85)"
+        }
+      },
+      "fundamental": {
+        "success": true,
+        "run_id": "6a46c1a8-6d2f-427b-993c-e30b2e2ec787",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728825228,
+          "completed_epoch_ms": 1782728825228,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "92d81d7ead9b06f2f42672a8fe505b86b2da08b61bfae6f262cfa2e6743f6a19",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "fund_score": 0.5103,
+            "fund_valuation": 0.0,
+            "fund_growth": 0.66,
+            "fund_health": 0.6977
+          },
+          "raw_signal": "FundamentalSignal(fundamental_score=0.5103, valuation_label='overvalued', growth_score=0.66, financial_health_score=0.6977, pe_ratio=49.180775, forward_pe=34.30111)"
+        }
+      },
+      "sentiment": {
+        "success": true,
+        "run_id": "6a46c1a8-6d2f-427b-993c-e30b2e2ec787",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728825228,
+          "completed_epoch_ms": 1782728826060,
+          "duration_ms": 832
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "bd15ddffcf6bf2d7652c5e518873c48bee91e896aad1e79a2afad0c19baeae82",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "sent_score": 0.5,
+            "sent_net_ratio": 0.0,
+            "sent_trend": 0.5,
+            "sent_confidence": 0.0
+          },
+          "raw_signal": "SentimentSignal(sentiment_score=0.5, positive_news_count=0, negative_news_count=0, sentiment_trend='stable', news_confidence_score=0.0)"
+        }
+      },
+      "event": {
+        "success": true,
+        "run_id": "6a46c1a8-6d2f-427b-993c-e30b2e2ec787",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728826060,
+          "completed_epoch_ms": 1782728826060,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "da5c9d91fef5e4b9cda8ef82722c667dcfce527edf3a0327c5f664e6b810f06b",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "evt_score": 0.1532,
+            "evt_earnings": 0.0,
+            "evt_risk": 0.5,
+            "evt_gap_up": 0.0,
+            "evt_gap_down": 0.0
+          },
+          "raw_signal": "EventSignal(event_score=0.1532, earnings_impact_flag=False, event_risk_level='medium', gap_up_flag=False, gap_down_flag=False, event_type=None, event_description=None)"
+        }
+      },
+      "judge_decision": {
+        "success": true,
+        "run_id": "6a46c1a8-6d2f-427b-993c-e30b2e2ec787",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728826060,
+          "completed_epoch_ms": 1782728826060,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "88753eb264a3de255c51324e1b2143ca7b6cbf46b60d0c45c66a9dd76e1388a4",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "decision": "SELL",
+          "prob_up_5d": 0.2212,
+          "expected_return_5d": -0.02788,
+          "downside_risk_prob": 0.7788,
+          "confidence": 0.7788,
+          "position_size_pct": 0.0,
+          "raw_decision": "JudgeDecision(symbol='ISRG', date='2026-06-26', decision='SELL', prob_up_5d=0.2212, expected_return_5d=-0.02788, downside_risk_prob=0.7788, confidence=0.7788, position_size_pct=0.0, stop_loss_pct=-0.03, take_profit_pct=0.06, reasoning=None, feature_importances={})"
+        }
+      }
+    },
+    {
+      "symbol": "ABBV",
+      "date": "2026-06-26",
+      "technical": {
+        "success": true,
+        "run_id": "f36d8e87-d0f3-4bec-8abd-d176b2159041",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728826570,
+          "completed_epoch_ms": 1782728826571,
+          "duration_ms": 1
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "a8b42841d2144246e9d70e9573470a29732bab2844ba4c8e0093bbc58c3f8d5d",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "tech_score": 1.0,
+            "tech_rsi": 0.7177,
+            "tech_macd": 1.0,
+            "tech_volatility": 0.0263,
+            "tech_breakout": 1.0,
+            "tech_trend": 1.0
+          },
+          "raw_signal": "TechnicalSignal(technical_score=1.0, rsi=71.77, macd_signal='buy', volatility=0.0263, breakout_flag=True, trend_direction='bullish', support_level=208.99, resistance_level=253.35)"
+        }
+      },
+      "fundamental": {
+        "success": true,
+        "run_id": "f36d8e87-d0f3-4bec-8abd-d176b2159041",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728826571,
+          "completed_epoch_ms": 1782728826571,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "be78e97d9c2c69292f1d85f08cfff60eb1f27fb3bc350e8f91f5aaf3c5519e4a",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "fund_score": 0.2949,
+            "fund_valuation": 0.0,
+            "fund_growth": 0.448,
+            "fund_health": 0.2271
+          },
+          "raw_signal": "FundamentalSignal(fundamental_score=0.2949, valuation_label='overvalued', growth_score=0.448, financial_health_score=0.2271, pe_ratio=123.58537, forward_pe=15.550607)"
+        }
+      },
+      "sentiment": {
+        "success": true,
+        "run_id": "f36d8e87-d0f3-4bec-8abd-d176b2159041",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728826571,
+          "completed_epoch_ms": 1782728827330,
+          "duration_ms": 759
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "bd15ddffcf6bf2d7652c5e518873c48bee91e896aad1e79a2afad0c19baeae82",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "sent_score": 0.5,
+            "sent_net_ratio": 0.0,
+            "sent_trend": 0.5,
+            "sent_confidence": 0.0
+          },
+          "raw_signal": "SentimentSignal(sentiment_score=0.5, positive_news_count=0, negative_news_count=0, sentiment_trend='stable', news_confidence_score=0.0)"
+        }
+      },
+      "event": {
+        "success": true,
+        "run_id": "f36d8e87-d0f3-4bec-8abd-d176b2159041",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728827330,
+          "completed_epoch_ms": 1782728827330,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "f81dcbdc175392ae0d7d16fd197c1bebebf59c794e27373ee33461fcea8d2d71",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "evt_score": 0.2023,
+            "evt_earnings": 0.0,
+            "evt_risk": 0.5,
+            "evt_gap_up": 0.0,
+            "evt_gap_down": 0.0
+          },
+          "raw_signal": "EventSignal(event_score=0.2023, earnings_impact_flag=False, event_risk_level='medium', gap_up_flag=False, gap_down_flag=False, event_type=None, event_description=None)"
+        }
+      },
+      "judge_decision": {
+        "success": true,
+        "run_id": "f36d8e87-d0f3-4bec-8abd-d176b2159041",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728827330,
+          "completed_epoch_ms": 1782728827330,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "69c02d7ccf4ed0ed339d5d640303167806b168787d3632abbc1ed95c9274a750",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "decision": "HOLD",
+          "prob_up_5d": 0.5063,
+          "expected_return_5d": 0.000628,
+          "downside_risk_prob": 0.4937,
+          "confidence": 0.4937,
+          "position_size_pct": 0.000251,
+          "raw_decision": "JudgeDecision(symbol='ABBV', date='2026-06-26', decision='HOLD', prob_up_5d=0.5063, expected_return_5d=0.000628, downside_risk_prob=0.4937, confidence=0.4937, position_size_pct=0.000251, stop_loss_pct=-0.03, take_profit_pct=0.06, reasoning=None, feature_importances={})"
+        }
+      }
+    },
+    {
+      "symbol": "MRK",
+      "date": "2026-06-26",
+      "technical": {
+        "success": true,
+        "run_id": "2ab1542b-7ab0-4ff6-8c2d-4da915ff3fc3",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728828383,
+          "completed_epoch_ms": 1782728828384,
+          "duration_ms": 1
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "270fbbb2398a7e3a6bd0911f4018395ff74a8583a214e85f09e07b3418e52fad",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "tech_score": 0.9789,
+            "tech_rsi": 0.6718999999999999,
+            "tech_macd": 1.0,
+            "tech_volatility": 0.0255,
+            "tech_breakout": 1.0,
+            "tech_trend": 1.0
+          },
+          "raw_signal": "TechnicalSignal(technical_score=0.9789, rsi=67.19, macd_signal='buy', volatility=0.0255, breakout_flag=True, trend_direction='bullish', support_level=111.57, resistance_level=128.78)"
+        }
+      },
+      "fundamental": {
+        "success": true,
+        "run_id": "2ab1542b-7ab0-4ff6-8c2d-4da915ff3fc3",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728828384,
+          "completed_epoch_ms": 1782728828384,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "3033cb04fe1e63dae53bfb18eb5511750143c6f71f3dc572dc29bae206dfdd87",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "fund_score": 0.2855,
+            "fund_valuation": 0.0,
+            "fund_growth": 0.298,
+            "fund_health": 0.3706
+          },
+          "raw_signal": "FundamentalSignal(fundamental_score=0.2855, valuation_label='overvalued', growth_score=0.298, financial_health_score=0.3706, pe_ratio=36.242256, forward_pe=13.458807)"
+        }
+      },
+      "sentiment": {
+        "success": true,
+        "run_id": "2ab1542b-7ab0-4ff6-8c2d-4da915ff3fc3",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728828384,
+          "completed_epoch_ms": 1782728829377,
+          "duration_ms": 993
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "bd15ddffcf6bf2d7652c5e518873c48bee91e896aad1e79a2afad0c19baeae82",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "sent_score": 0.5,
+            "sent_net_ratio": 0.0,
+            "sent_trend": 0.5,
+            "sent_confidence": 0.0
+          },
+          "raw_signal": "SentimentSignal(sentiment_score=0.5, positive_news_count=0, negative_news_count=0, sentiment_trend='stable', news_confidence_score=0.0)"
+        }
+      },
+      "event": {
+        "success": true,
+        "run_id": "2ab1542b-7ab0-4ff6-8c2d-4da915ff3fc3",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728829377,
+          "completed_epoch_ms": 1782728829378,
+          "duration_ms": 1
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "48bf9f679c26bdbb603acebc3f5e28d504234df7533eaf73c20713fd616e36cc",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "evt_score": 0.2882,
+            "evt_earnings": 0.0,
+            "evt_risk": 1.0,
+            "evt_gap_up": 0.0,
+            "evt_gap_down": 0.0
+          },
+          "raw_signal": "EventSignal(event_score=0.2882, earnings_impact_flag=False, event_risk_level='high', gap_up_flag=False, gap_down_flag=False, event_type=None, event_description=None)"
+        }
+      },
+      "judge_decision": {
+        "success": true,
+        "run_id": "2ab1542b-7ab0-4ff6-8c2d-4da915ff3fc3",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728829378,
+          "completed_epoch_ms": 1782728829378,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "3d699ca3c61bcadcad7a2d62a0ed4ae6382ad5abacda1356c066c6114bfa7b43",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "decision": "HOLD",
+          "prob_up_5d": 0.5068,
+          "expected_return_5d": 0.000682,
+          "downside_risk_prob": 0.4932,
+          "confidence": 0.4932,
+          "position_size_pct": 0.000273,
+          "raw_decision": "JudgeDecision(symbol='MRK', date='2026-06-26', decision='HOLD', prob_up_5d=0.5068, expected_return_5d=0.000682, downside_risk_prob=0.4932, confidence=0.4932, position_size_pct=0.000273, stop_loss_pct=-0.03, take_profit_pct=0.06, reasoning=None, feature_importances={})"
+        }
+      }
+    },
+    {
+      "symbol": "PLUG",
+      "date": "2026-06-26",
+      "technical": {
+        "success": true,
+        "run_id": "4aa3dd48-e715-4223-b158-8e8f73e2b3ee",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728829904,
+          "completed_epoch_ms": 1782728829905,
+          "duration_ms": 1
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "bc4e4a86bbc00c35a0351a0f75767989bc61a0cbe3e41b7481b424ddbe065457",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "tech_score": 0.0,
+            "tech_rsi": 0.2069,
+            "tech_macd": 0.0,
+            "tech_volatility": 0.0759,
+            "tech_breakout": 0.0,
+            "tech_trend": 0.0
+          },
+          "raw_signal": "TechnicalSignal(technical_score=0.0, rsi=20.69, macd_signal='sell', volatility=0.0759, breakout_flag=False, trend_direction='bearish', support_level=2.47, resistance_level=4.33)"
+        }
+      },
+      "fundamental": {
+        "success": true,
+        "run_id": "4aa3dd48-e715-4223-b158-8e8f73e2b3ee",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728829905,
+          "completed_epoch_ms": 1782728829905,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "5e550fe95ef527cf6981f086d0ece0efcbfac0668fb8697397437179796d47e4",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "fund_score": 0.4361,
+            "fund_valuation": 0.5,
+            "fund_growth": 0.646,
+            "fund_health": 0.0
+          },
+          "raw_signal": "FundamentalSignal(fundamental_score=0.4361, valuation_label='fair', growth_score=0.646, financial_health_score=0.0, pe_ratio=None, forward_pe=-15.460466)"
+        }
+      },
+      "sentiment": {
+        "success": true,
+        "run_id": "4aa3dd48-e715-4223-b158-8e8f73e2b3ee",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728829905,
+          "completed_epoch_ms": 1782728830668,
+          "duration_ms": 763
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "bd15ddffcf6bf2d7652c5e518873c48bee91e896aad1e79a2afad0c19baeae82",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "sent_score": 0.5,
+            "sent_net_ratio": 0.0,
+            "sent_trend": 0.5,
+            "sent_confidence": 0.0
+          },
+          "raw_signal": "SentimentSignal(sentiment_score=0.5, positive_news_count=0, negative_news_count=0, sentiment_trend='stable', news_confidence_score=0.0)"
+        }
+      },
+      "event": {
+        "success": true,
+        "run_id": "4aa3dd48-e715-4223-b158-8e8f73e2b3ee",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728830668,
+          "completed_epoch_ms": 1782728830668,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "c6b982f7ce5d2808e2a51d908a43919094f87a40a3e14c2be5871be524ea0495",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "evt_score": 0.4334,
+            "evt_earnings": 0.0,
+            "evt_risk": 1.0,
+            "evt_gap_up": 0.0,
+            "evt_gap_down": 1.0
+          },
+          "raw_signal": "EventSignal(event_score=0.4334, earnings_impact_flag=False, event_risk_level='high', gap_up_flag=False, gap_down_flag=True, event_type=None, event_description=None)"
+        }
+      },
+      "judge_decision": {
+        "success": true,
+        "run_id": "4aa3dd48-e715-4223-b158-8e8f73e2b3ee",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728830668,
+          "completed_epoch_ms": 1782728830668,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "712ea0b51e1fa692051d3d34578717cbbc287f62a462395bc1eb8935cc8bebe8",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "decision": "SELL",
+          "prob_up_5d": 0.1856,
+          "expected_return_5d": -0.031436,
+          "downside_risk_prob": 0.8144,
+          "confidence": 0.8144,
+          "position_size_pct": 0.0,
+          "raw_decision": "JudgeDecision(symbol='PLUG', date='2026-06-26', decision='SELL', prob_up_5d=0.1856, expected_return_5d=-0.031436, downside_risk_prob=0.8144, confidence=0.8144, position_size_pct=0.0, stop_loss_pct=-0.03, take_profit_pct=0.06, reasoning=None, feature_importances={})"
+        }
+      }
+    },
+    {
+      "symbol": "IONQ",
+      "date": "2026-06-26",
+      "technical": {
+        "success": true,
+        "run_id": "3e4a50c3-3fbf-4644-91b4-9ded14745af9",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728831075,
+          "completed_epoch_ms": 1782728831076,
+          "duration_ms": 1
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "884ad17a19b7448363cdcb9b735e287799e93106c2ff459fd07113dd2f208690",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "tech_score": 0.3725,
+            "tech_rsi": 0.3967,
+            "tech_macd": 0.0,
+            "tech_volatility": 0.1103,
+            "tech_breakout": 0.0,
+            "tech_trend": 1.0
+          },
+          "raw_signal": "TechnicalSignal(technical_score=0.3725, rsi=39.67, macd_signal='sell', volatility=0.1103, breakout_flag=False, trend_direction='bullish', support_level=48.49, resistance_level=73.65)"
+        }
+      },
+      "fundamental": {
+        "success": true,
+        "run_id": "3e4a50c3-3fbf-4644-91b4-9ded14745af9",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728831076,
+          "completed_epoch_ms": 1782728831076,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "879e2ba1ac87e5159519df3463dcc4163242910f719f1254c1ef68e071254a20",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "fund_score": 0.6364,
+            "fund_valuation": 0.0,
+            "fund_growth": 1.0,
+            "fund_health": 0.7214
+          },
+          "raw_signal": "FundamentalSignal(fundamental_score=0.6364, valuation_label='overvalued', growth_score=1.0, financial_health_score=0.7214, pe_ratio=126.435905, forward_pe=-46.805)"
+        }
+      },
+      "sentiment": {
+        "success": true,
+        "run_id": "3e4a50c3-3fbf-4644-91b4-9ded14745af9",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728831076,
+          "completed_epoch_ms": 1782728831807,
+          "duration_ms": 731
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "bd15ddffcf6bf2d7652c5e518873c48bee91e896aad1e79a2afad0c19baeae82",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "sent_score": 0.5,
+            "sent_net_ratio": 0.0,
+            "sent_trend": 0.5,
+            "sent_confidence": 0.0
+          },
+          "raw_signal": "SentimentSignal(sentiment_score=0.5, positive_news_count=0, negative_news_count=0, sentiment_trend='stable', news_confidence_score=0.0)"
+        }
+      },
+      "event": {
+        "success": true,
+        "run_id": "3e4a50c3-3fbf-4644-91b4-9ded14745af9",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728831807,
+          "completed_epoch_ms": 1782728831807,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "93680f333a3528e84dda9dd89304113b1f769b12b3bb184f164d3bb9a4e77d52",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "evt_score": 0.258,
+            "evt_earnings": 0.0,
+            "evt_risk": 0.5,
+            "evt_gap_up": 0.0,
+            "evt_gap_down": 0.0
+          },
+          "raw_signal": "EventSignal(event_score=0.258, earnings_impact_flag=False, event_risk_level='medium', gap_up_flag=False, gap_down_flag=False, event_type=None, event_description=None)"
+        }
+      },
+      "judge_decision": {
+        "success": true,
+        "run_id": "3e4a50c3-3fbf-4644-91b4-9ded14745af9",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728831807,
+          "completed_epoch_ms": 1782728831807,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "9eb5f568818242b0194d98718690fdd935ac092299efa35a8a2ee69596aca308",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "decision": "HOLD",
+          "prob_up_5d": 0.4088,
+          "expected_return_5d": -0.009121,
+          "downside_risk_prob": 0.5912,
+          "confidence": 0.5912,
+          "position_size_pct": 0.0,
+          "raw_decision": "JudgeDecision(symbol='IONQ', date='2026-06-26', decision='HOLD', prob_up_5d=0.4088, expected_return_5d=-0.009121, downside_risk_prob=0.5912, confidence=0.5912, position_size_pct=0.0, stop_loss_pct=-0.03, take_profit_pct=0.06, reasoning=None, feature_importances={})"
+        }
+      }
+    }
+  ]
+}

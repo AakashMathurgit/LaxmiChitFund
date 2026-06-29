@@ -1,0 +1,193 @@
+{
+  "watchlist": [
+    {
+      "symbol": "NUCLEUS",
+      "added_date": "2026-03-11",
+      "reason": "Portfolio holding - IT services & banking software",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-18",
+      "notes": "5 shares @ 970. ISIN: INE096B01018"
+    },
+    {
+      "symbol": "EXIDEIND",
+      "added_date": "2026-03-11",
+      "reason": "Portfolio holding - Battery & energy storage",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-18",
+      "notes": "20 shares @ 401.02. ISIN: INE302A01020"
+    },
+    {
+      "symbol": "BEL",
+      "added_date": "2026-03-11",
+      "reason": "Portfolio holding - Defence electronics",
+      "priority": "high",
+      "last_signal": "",
+      "last_signal_date": "",
+      "notes": "20 shares @ 420.03. ISIN: INE263A01024"
+    },
+    {
+      "symbol": "CANROBECOAMC",
+      "added_date": "2026-03-11",
+      "reason": "Portfolio holding - Asset management",
+      "priority": "high",
+      "last_signal": "",
+      "last_signal_date": "",
+      "notes": "20 shares @ 282.58. ISIN: INE218I01013"
+    },
+    {
+      "symbol": "PW",
+      "added_date": "2026-03-11",
+      "reason": "Portfolio holding - EdTech (Physicswallah)",
+      "priority": "high",
+      "last_signal": "",
+      "last_signal_date": "",
+      "notes": "159 shares @ 113.62. ISIN: INE0LP301011"
+    },
+    {
+      "symbol": "PINELABS",
+      "added_date": "2026-03-11",
+      "reason": "Portfolio holding - Fintech payments",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-18",
+      "notes": "77 shares @ 221. ISIN: INE15B701018"
+    },
+    {
+      "symbol": "SUZLON",
+      "added_date": "2026-03-11",
+      "reason": "Portfolio holding - Wind energy",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-18",
+      "notes": "285 shares @ 55.02. ISIN: INE040H01021"
+    },
+    {
+      "symbol": "THYROCARE",
+      "added_date": "2026-03-11",
+      "reason": "Portfolio holding - Diagnostics/Healthcare",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-18",
+      "notes": "6 shares @ 474.62. ISIN: INE594H01019"
+    },
+    {
+      "symbol": "CIPLA",
+      "added_date": "2026-03-11",
+      "reason": "Portfolio holding - Pharma major",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-18",
+      "notes": "16 shares @ 1506.58. ISIN: INE059A01026"
+    },
+    {
+      "symbol": "FRACTALIND",
+      "added_date": "2026-03-11",
+      "reason": "Portfolio holding - Largest position",
+      "priority": "high",
+      "last_signal": "",
+      "last_signal_date": "",
+      "notes": "1200 shares @ 216. ISIN: INE1W3Q01011. 71% of portfolio"
+    },
+    {
+      "symbol": "BHEL",
+      "added_date": "2026-03-11",
+      "reason": "Portfolio holding - Heavy electricals / Power",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-18",
+      "notes": "4 shares @ 233.52. ISIN: INE257A01026"
+    },
+    {
+      "symbol": "RELIANCE",
+      "added_date": "2026-03-09",
+      "reason": "Core NIFTY50 - Oil & Retail conglomerate",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-09",
+      "notes": "Jio + Retail growth story"
+    },
+    {
+      "symbol": "TCS",
+      "added_date": "2026-03-09",
+      "reason": "IT bellwether - strong fundamentals",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-09",
+      "notes": "Stable dividend payer"
+    },
+    {
+      "symbol": "HDFCBANK",
+      "added_date": "2026-03-09",
+      "reason": "Largest private bank - quality franchise",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-10",
+      "notes": "Post-merger integration watch"
+    },
+    {
+      "symbol": "INFY",
+      "added_date": "2026-03-09",
+      "reason": "IT sector leader - growth stock",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-09",
+      "notes": ""
+    },
+    {
+      "symbol": "ICICIBANK",
+      "added_date": "2026-03-09",
+      "reason": "Banking - improving asset quality",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-09",
+      "notes": ""
+    },
+    {
+      "symbol": "BAJFINANCE",
+      "added_date": "2026-03-09",
+      "reason": "NBFC leader - consumer lending",
+      "priority": "medium",
+      "last_signal": "",
+      "last_signal_date": "",
+      "notes": "High PE but high growth"
+    },
+    {
+      "symbol": "TATAMOTORS",
+      "added_date": "2026-03-09",
+      "reason": "EV play + JLR turnaround",
+      "priority": "medium",
+      "last_signal": "",
+      "last_signal_date": "",
+      "notes": ""
+    },
+    {
+      "symbol": "SUNPHARMA",
+      "added_date": "2026-03-09",
+      "reason": "Pharma leader - defensive pick",
+      "priority": "low",
+      "last_signal": "",
+      "last_signal_date": "",
+      "notes": "Specialty pharma growth"
+    },
+    {
+      "symbol": "ADANIPORTS",
+      "added_date": "2026-03-09",
+      "reason": "Infrastructure - monopoly ports",
+      "priority": "low",
+      "last_signal": "",
+      "last_signal_date": "",
+      "notes": ""
+    },
+    {
+      "symbol": "TITAN",
+      "added_date": "2026-03-09",
+      "reason": "Consumer discretionary - premium brand",
+      "priority": "low",
+      "last_signal": "",
+      "last_signal_date": "",
+      "notes": "Tanishq + watches"
+    }
+  ]
+}

@@ -1,0 +1,338 @@
+{
+  "timestamp": "2026-06-29T15:56:14.643893",
+  "market": "US",
+  "mode": "adaptive",
+  "movers_analyzed": 2,
+  "movers": [
+    {
+      "symbol": "NOW",
+      "sector": "Technology",
+      "current": 98.4000015258789,
+      "day_open": 90.44000244140625,
+      "day_high": 98.91999816894531,
+      "day_low": 90.0,
+      "prev_close": 89.5199966430664,
+      "pct_change": 9.92,
+      "volume": 21254501,
+      "avg_volume": 32021468.2,
+      "intraday_range_pct": 9.964,
+      "vol_spike": 0.66,
+      "fluctuation_score": 16.229
+    },
+    {
+      "symbol": "QCOM",
+      "sector": "Technology",
+      "current": 188.60000610351562,
+      "day_open": 201.8000030517578,
+      "day_high": 208.86000061035156,
+      "day_low": 186.25999450683594,
+      "prev_close": 204.89999389648438,
+      "pct_change": -7.955,
+      "volume": 22675253,
+      "avg_volume": 22896036.4,
+      "intraday_range_pct": 11.03,
+      "vol_spike": 0.99,
+      "fluctuation_score": 15.451
+    }
+  ],
+  "buy_count": 0,
+  "sell_count": 2,
+  "results": [
+    {
+      "symbol": "NOW",
+      "date": "2026-06-26",
+      "technical": {
+        "success": true,
+        "run_id": "f5139218-0229-4a24-802b-81c29a86080f",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728792783,
+          "completed_epoch_ms": 1782728792783,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "cafef1b0387937df03c2b5427f87b5c182ebd07f7696e68d0e1919c5cc64b58e",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "tech_score": 0.0326,
+            "tech_rsi": 0.3435,
+            "tech_macd": 0.0,
+            "tech_volatility": 0.0574,
+            "tech_breakout": 0.0,
+            "tech_trend": 0.0
+          },
+          "raw_signal": "TechnicalSignal(technical_score=0.0326, rsi=34.35, macd_signal='sell', volatility=0.0574, breakout_flag=False, trend_direction='bearish', support_level=89.39, resistance_level=139.2)"
+        }
+      },
+      "fundamental": {
+        "success": true,
+        "run_id": "f5139218-0229-4a24-802b-81c29a86080f",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728792783,
+          "completed_epoch_ms": 1782728792783,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "22082b07c47d51285ed102e52cde57cbcf55f7e9de959bf6cfb3cad3808bf6ed",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "fund_score": 0.3932,
+            "fund_valuation": 0.0,
+            "fund_growth": 0.642,
+            "fund_health": 0.3285
+          },
+          "raw_signal": "FundamentalSignal(fundamental_score=0.3932, valuation_label='overvalued', growth_score=0.642, financial_health_score=0.3285, pe_ratio=58.535713, forward_pe=19.563568)"
+        }
+      },
+      "sentiment": {
+        "success": true,
+        "run_id": "f5139218-0229-4a24-802b-81c29a86080f",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728792783,
+          "completed_epoch_ms": 1782728794908,
+          "duration_ms": 2125
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "bd15ddffcf6bf2d7652c5e518873c48bee91e896aad1e79a2afad0c19baeae82",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "sent_score": 0.5,
+            "sent_net_ratio": 0.0,
+            "sent_trend": 0.5,
+            "sent_confidence": 0.0
+          },
+          "raw_signal": "SentimentSignal(sentiment_score=0.5, positive_news_count=0, negative_news_count=0, sentiment_trend='stable', news_confidence_score=0.0)"
+        }
+      },
+      "event": {
+        "success": true,
+        "run_id": "f5139218-0229-4a24-802b-81c29a86080f",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728794908,
+          "completed_epoch_ms": 1782728794908,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "ffa34a2d5dbcb6768a1ec683e02f051b7443d1306123bde9b8d252f0fd1ff1b8",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "evt_score": 0.2117,
+            "evt_earnings": 0.0,
+            "evt_risk": 0.5,
+            "evt_gap_up": 0.0,
+            "evt_gap_down": 0.0
+          },
+          "raw_signal": "EventSignal(event_score=0.2117, earnings_impact_flag=False, event_risk_level='medium', gap_up_flag=False, gap_down_flag=False, event_type=None, event_description=None)"
+        }
+      },
+      "judge_decision": {
+        "success": true,
+        "run_id": "f5139218-0229-4a24-802b-81c29a86080f",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728794908,
+          "completed_epoch_ms": 1782728794908,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "35f74572f96a3535336aa07e002c5b6dad3b70c812368693c694df8534344a49",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "decision": "SELL",
+          "prob_up_5d": 0.1883,
+          "expected_return_5d": -0.03117,
+          "downside_risk_prob": 0.8117,
+          "confidence": 0.8117,
+          "position_size_pct": 0.0,
+          "raw_decision": "JudgeDecision(symbol='NOW', date='2026-06-26', decision='SELL', prob_up_5d=0.1883, expected_return_5d=-0.03117, downside_risk_prob=0.8117, confidence=0.8117, position_size_pct=0.0, stop_loss_pct=-0.03, take_profit_pct=0.06, reasoning=None, feature_importances={})"
+        }
+      },
+      "cross_ticker": {
+        "symbol": "NOW",
+        "move_direction": "rise",
+        "move_pct": 9.9196,
+        "news_synced": true,
+        "explanation_type": "unexplained",
+        "driver_ticker": null,
+        "driver_headline": "",
+        "confidence": 0.2,
+        "reasoning": "There is no recent news for NOW or its peers that could explain the notable intraday move. Without any relevant headlines or sector-wide developments, the move appears unexplained by available news."
+      },
+      "intraday_decision": {
+        "final_decision": "SELL",
+        "final_confidence": 0.8117,
+        "note": "SELL kept but move is unexplained \u2014 verify before acting"
+      }
+    },
+    {
+      "symbol": "QCOM",
+      "date": "2026-06-26",
+      "technical": {
+        "success": true,
+        "run_id": "501ff748-85e5-4948-abf8-c57582a650c7",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728795654,
+          "completed_epoch_ms": 1782728795654,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "6906f43a7feaff4219e012186d9f0ea2cb874571a09eefa12e243bd1634f5ece",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "tech_score": 0.3738,
+            "tech_rsi": 0.39840000000000003,
+            "tech_macd": 0.0,
+            "tech_volatility": 0.0883,
+            "tech_breakout": 0.0,
+            "tech_trend": 1.0
+          },
+          "raw_signal": "TechnicalSignal(technical_score=0.3738, rsi=39.84, macd_signal='sell', volatility=0.0883, breakout_flag=False, trend_direction='bullish', support_level=186.18, resistance_level=258.96)"
+        }
+      },
+      "fundamental": {
+        "success": true,
+        "run_id": "501ff748-85e5-4948-abf8-c57582a650c7",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728795654,
+          "completed_epoch_ms": 1782728795654,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "1fe07b225846d55e78a547a7dfc1a8af3c408345294f1e446579cba0793cfc34",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "fund_score": 0.4347,
+            "fund_valuation": 0.5,
+            "fund_growth": 0.13,
+            "fund_health": 0.5974
+          },
+          "raw_signal": "FundamentalSignal(fundamental_score=0.4347, valuation_label='fair', growth_score=0.13, financial_health_score=0.5974, pe_ratio=20.364515, forward_pe=17.271757)"
+        }
+      },
+      "sentiment": {
+        "success": true,
+        "run_id": "501ff748-85e5-4948-abf8-c57582a650c7",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728795654,
+          "completed_epoch_ms": 1782728796416,
+          "duration_ms": 762
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "bd15ddffcf6bf2d7652c5e518873c48bee91e896aad1e79a2afad0c19baeae82",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "sent_score": 0.5,
+            "sent_net_ratio": 0.0,
+            "sent_trend": 0.5,
+            "sent_confidence": 0.0
+          },
+          "raw_signal": "SentimentSignal(sentiment_score=0.5, positive_news_count=0, negative_news_count=0, sentiment_trend='stable', news_confidence_score=0.0)"
+        }
+      },
+      "event": {
+        "success": true,
+        "run_id": "501ff748-85e5-4948-abf8-c57582a650c7",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728796416,
+          "completed_epoch_ms": 1782728796416,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "91ac221c8162f55185125f9fe2c69849f7d9c0f2bd5aed0cc5885821d0b6c9df",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "evt_score": 0.3637,
+            "evt_earnings": 0.0,
+            "evt_risk": 1.0,
+            "evt_gap_up": 0.0,
+            "evt_gap_down": 0.0
+          },
+          "raw_signal": "EventSignal(event_score=0.3637, earnings_impact_flag=False, event_risk_level='high', gap_up_flag=False, gap_down_flag=False, event_type=None, event_description=None)"
+        }
+      },
+      "judge_decision": {
+        "success": true,
+        "run_id": "501ff748-85e5-4948-abf8-c57582a650c7",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1782728796416,
+          "completed_epoch_ms": 1782728796416,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "c39da4085889867e29ad85eff88bea2e182b49caf8668b70ae4fee72f41bc78f",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "decision": "SELL",
+          "prob_up_5d": 0.3414,
+          "expected_return_5d": -0.015857,
+          "downside_risk_prob": 0.6586,
+          "confidence": 0.6586,
+          "position_size_pct": 0.0,
+          "raw_decision": "JudgeDecision(symbol='QCOM', date='2026-06-26', decision='SELL', prob_up_5d=0.3414, expected_return_5d=-0.015857, downside_risk_prob=0.6586, confidence=0.6586, position_size_pct=0.0, stop_loss_pct=-0.03, take_profit_pct=0.06, reasoning=None, feature_importances={})"
+        }
+      },
+      "cross_ticker": {
+        "symbol": "QCOM",
+        "move_direction": "loss",
+        "move_pct": -7.9551,
+        "news_synced": true,
+        "explanation_type": "unexplained",
+        "driver_ticker": null,
+        "driver_headline": "",
+        "confidence": 0.2,
+        "reasoning": "There is no recent news for QCOM or its peers that would explain the notable intraday move. The lack of any relevant headlines suggests the move is unexplained based on available information."
+      },
+      "intraday_decision": {
+        "final_decision": "SELL",
+        "final_confidence": 0.6586,
+        "note": "SELL kept but move is unexplained \u2014 verify before acting"
+      }
+    }
+  ]
+}

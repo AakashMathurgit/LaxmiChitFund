@@ -1,0 +1,155 @@
+"""Concrete flow adapters for the 5 LCF pipelines.
+
+Each adapter runs its existing entry script in an isolated subprocess (so a hung
+flow can't wedge the scheduler), then parses that script's result JSON into a
+normalized FlowResult/Decision list for the combined store + conflict checks.
+"""
+
+from __future__ import annotations
+
+import os
+from typing import Any, Dict, List
+
+from .base import Flow, FlowResult, Decision
+
+_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+
+def _decisions_from_judge(data: Dict[str, Any], horizon: str) -> List[Decision]:
+    out: List[Decision] = []
+    for r in (data or {}).get("results", []):
+        if "error" in r:
+            continue
+        jd = r.get("judge_decision", {}).get("payload", {})
+        decision = jd.get("decision")
+        if not decision:
+            continue
+        out.append(Decision(
+            symbol=r.get("symbol", "?"),
+            action=decision,
+            confidence=float(jd.get("confidence", 0.0) or 0.0),
+            horizon=horizon,
+        ))
+    return out
+
+
+class IntradayUSFlow(Flow):
+    name = "us-intraday"
+    horizon = "intraday"
+    cadence = "4m"
+    market_hours_only = True
+
+    def run(self, rt: Any, **opts) -> FlowResult:
+        ts = self._now()
+        args = ["--mode", opts.get("mode", "adaptive")]
+        if opts.get("top"):
+            args += ["--top", str(opts["top"])]
+        if opts.get("auto_trade") is False:
+            args.append("--no-auto-trade")
+        try:
+            rc = self._run_script("us_intraday_tracker/run_us_intraday.py", args, timeout=300)
+            data = self._load_json(os.path.join(_ROOT, "us_intraday_tracker", "intraday_results.json")) or {}
+            decisions = [
+                Decision(
+                    symbol=r.get("symbol", "?"),
+                    action=r.get("intraday_decision", {}).get("final_decision", "HOLD"),
+                    confidence=float(r.get("intraday_decision", {}).get("final_confidence", 0.0) or 0.0),
+                    horizon=self.horizon,
+                    detail=r.get("cross_ticker", {}).get("explanation_type", ""),
+                )
+                for r in data.get("results", []) if "error" not in r
+            ]
+            return FlowResult(self.name, ts, ok=(rc == 0), decisions=decisions,
+                              summary=f"{data.get('buy_count', 0)} BUY / {data.get('sell_count', 0)} SELL")
+        except Exception as e:
+            return FlowResult(self.name, ts, ok=False, error=str(e))
+
+
+class USDailyFlow(Flow):
+    name = "us-daily"
+    horizon = "swing"
+    cadence = "daily"
+
+    def run(self, rt: Any, **opts) -> FlowResult:
+        ts = self._now()
+        args = ["--mode", opts.get("mode", "adaptive"), "--stocks", str(opts.get("stocks", 10))]
+        if opts.get("auto_trade"):
+            args.append("--auto-trade")
+        try:
+            rc = self._run_script("us_stock_tracker/run_us_pipeline.py", args, timeout=900)
+            data = self._load_json(os.path.join(_ROOT, "us_stock_tracker", "analysis_results.json")) or {}
+            decisions = _decisions_from_judge(data, self.horizon)
+            return FlowResult(self.name, ts, ok=(rc == 0), decisions=decisions,
+                              summary=f"{data.get('buy_count', 0)} BUY / {data.get('sell_count', 0)} SELL")
+        except Exception as e:
+            return FlowResult(self.name, ts, ok=False, error=str(e))
+
+
+class INDailyFlow(Flow):
+    name = "in-daily"
+    horizon = "swing"
+    cadence = "daily"
+
+    def run(self, rt: Any, **opts) -> FlowResult:
+        ts = self._now()
+        args = ["--mode", opts.get("mode", "adaptive"), "--stocks", str(opts.get("stocks", 10))]
+        if opts.get("auto_trade"):
+            args.append("--auto-trade")
+        try:
+            rc = self._run_script("news_stock_tracker/run_orchestrator_pipeline.py", args, timeout=900)
+            data = self._load_json(os.path.join(_ROOT, "news_stock_tracker", "analysis_results.json")) or {}
+            decisions = _decisions_from_judge(data, self.horizon)
+            return FlowResult(self.name, ts, ok=(rc == 0), decisions=decisions,
+                              summary=f"{data.get('buy_count', 0)} BUY / {data.get('sell_count', 0)} SELL")
+        except Exception as e:
+            return FlowResult(self.name, ts, ok=False, error=str(e))
+
+
+class PredictUSFlow(Flow):
+    name = "us-predict"
+    horizon = "forecast"
+    cadence = "weekly"
+
+    _OUTLOOK = {"bullish": "BUY", "bearish": "SELL", "neutral": "HOLD"}
+
+    def run(self, rt: Any, **opts) -> FlowResult:
+        ts = self._now()
+        args = ["--mode", opts.get("mode", "adaptive")]
+        try:
+            rc = self._run_script("us_stock_tracker/run_us_prediction.py", args, timeout=900)
+            data = self._load_json(os.path.join(_ROOT, "us_stock_tracker", "prediction_results.json")) or {}
+            decisions = []
+            for r in data.get("results", []):
+                if "error" in r:
+                    continue
+                outlook = (r.get("overall_outlook") or "").lower()
+                decisions.append(Decision(
+                    symbol=r.get("symbol", "?"),
+                    action=self._OUTLOOK.get(outlook, "HOLD"),
+                    confidence=float(r.get("overall_confidence", 0.0) or 0.0),
+                    horizon=self.horizon,
+                    detail=outlook,
+                ))
+            return FlowResult(self.name, ts, ok=(rc == 0), decisions=decisions,
+                              summary=f"{len(decisions)} forecasts")
+        except Exception as e:
+            return FlowResult(self.name, ts, ok=False, error=str(e))
+
+
+class AdvisorFlow(Flow):
+    name = "advise"
+    horizon = "long_term"
+    cadence = "monthly"
+
+    def run(self, rt: Any, **opts) -> FlowResult:
+        ts = self._now()
+        args = ["--report", opts.get("report", "monthly")]
+        try:
+            rc = self._run_script("advisor_main.py", args, timeout=1200)
+            # Advisor writes a report under data/advisor_reports; decisions are
+            # holdings recommendations (not directly comparable to trades), so we
+            # report success/summary only here.
+            return FlowResult(self.name, ts, ok=(rc == 0),
+                              summary="advisor report generated" if rc == 0 else "advisor failed")
+        except Exception as e:
+            return FlowResult(self.name, ts, ok=False, error=str(e))

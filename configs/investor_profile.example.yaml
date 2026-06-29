@@ -1,0 +1,51 @@
+# Copy this to `investor_profile.yaml` and fill in YOUR details.
+# investor_profile.yaml should be added to .gitignore.
+
+investor:
+  name: "Your Name"
+  age: 32
+  base_currency: "INR"
+  risk_tolerance: "moderate"      # conservative | moderate | aggressive
+  monthly_investable_inr: 50000
+
+# --- Goals ---
+goals:
+  - name: "Retirement"
+    target_amount_inr: 50_000_000
+    target_year: 2050
+    priority: 1
+  - name: "House Down Payment"
+    target_amount_inr: 7_500_000
+    target_year: 2030
+    priority: 2
+  - name: "Child Education"
+    target_amount_inr: 10_000_000
+    target_year: 2040
+    priority: 3
+
+# --- Tax profile ---
+tax:
+  in_slab_pct: 30
+  us_status: "non_resident"        # resident | non_resident | none
+  prefer_long_term_holding: true
+
+# --- Portfolio data sources (manual JSON for now) ---
+portfolio:
+  in_equity_file: "data/advisor/portfolio_in.json"
+  us_equity_file: "data/advisor/portfolio_us.json"
+  mutual_funds_file: "data/advisor/portfolio_mf.json"
+
+# --- Override default allocation if you want ---
+target_allocation:
+  us_equity: 25
+  in_equity: 35
+  mf_equity: 20
+  mf_debt: 10
+  etf: 5
+  gold: 3
+  cash: 2
+
+# --- Notifications (advice-only, no auto-trade) ---
+notify:
+  email: ""
+  whatsapp: ""

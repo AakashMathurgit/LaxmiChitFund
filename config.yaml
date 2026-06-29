@@ -1,0 +1,82 @@
+version: "1.0.0"
+
+project:
+  name: "LCF — Multi-Agent System"
+  description: "LangGraph-based agent orchestration framework"
+
+orchestrator:
+  stages:
+    input_validation: { enabled: true }
+    rule_retrieval: { enabled: true }
+    planner: { enabled: true }
+    token_budgeter: { enabled: true }
+    code_synthesizer: { enabled: true }
+    critic_reviewer: { enabled: true }
+    build_validation: { enabled: true }
+    packaging: { enabled: true }
+    provenance_ledger: { enabled: true }
+
+evaluation:
+  categories:
+    - "Correctness & Quality"
+    - "Determinism & Provenance"
+    - "Security & SDL"
+    - "Performance & Cost"
+    - "Developer Experience"
+  kpis:
+    - id: compile_success_rate
+      category: "Correctness & Quality"
+      definition: "Successful builds over total builds"
+      formula: "successful_builds / total_builds"
+      unit: "ratio"
+      direction: "higher_is_better"
+    - id: test_pass_rate
+      category: "Correctness & Quality"
+      definition: "Passed tests over total tests"
+      formula: "tests_passed / tests_total"
+      unit: "ratio"
+      direction: "higher_is_better"
+    - id: hash_match_rate
+      category: "Determinism & Provenance"
+      definition: "Stable artifact hash for same input/rules"
+      formula: "matching_hashes / total_runs"
+      unit: "ratio"
+      direction: "higher_is_better"
+
+langgraph:
+  enable_checkpointing: true
+  debug_mode: false
+  interrupt_handling: true
+
+# Azure OpenAI LLM configuration
+llm:
+  credentials_file: "credentials.yaml"
+  model: "gpt-4.1"
+  temperature: 0.2
+  max_tokens: 1024
+
+# US intraday fluctuation tracker
+intraday:
+  scan_interval_min: 4          # loop cadence (minutes)
+  top_movers: 8                 # movers deep-analysed per cycle
+  scan_interval_yf: "2m"        # yfinance interval for the cheap scan
+  deep_interval_yf: "15m"       # yfinance interval for deep analysis of movers
+  deep_period_yf: "5d"          # history window for deep analysis
+  min_fluctuation_pct: 1.5      # min abs %% day change to qualify as a mover
+  universe_file: "us_intraday_tracker/universe_us.yaml"
+
+# Brokers — every available one fires on each BUY/SELL (plus a Pushover ping).
+# Vested broker (buy/sell API layer)
+vested:
+  mode: "paper"                 # "paper" (logs orders) | "live" (not implemented)
+  paper_orders_path: "data/vested_paper_orders.jsonl"
+
+# Alpaca paper trading (real API). Credentials live in credentials.yaml (alpaca:).
+alpaca:
+  enabled: true
+  paper: true                   # endpoint comes from credentials.yaml
+
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  output_dir: "./logs"

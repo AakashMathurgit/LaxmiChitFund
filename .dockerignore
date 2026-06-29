@@ -1,0 +1,17 @@
+# Never bake secrets into the image — provided as env vars at runtime.
+credentials.yaml
+
+# Local dev cruft.
+.git
+.venv
+venv
+__pycache__
+*.pyc
+.vscode
+.idea
+logs/
+
+# Large/transient runtime data (regenerated on the server).
+data/pattern_store/
+data/us_pattern_store/
+*.jsonl

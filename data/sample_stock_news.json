@@ -1,0 +1,21 @@
+[
+  {
+    "symbol": "TCS",
+    "date": "2026-03-03",
+    "news_text": "TCS wins $2B multi-year cloud transformation deal with a major US bank. Analysts see 15% upside potential. Q3 revenue beat estimates by 4%. Management raised full-year guidance citing strong deal pipeline. Institutional investors increased holdings by 2% this quarter."
+  },
+  {
+    "symbol": "INFY",
+    "date": "2026-03-03",
+    "news_text": "Infosys faces headwinds as key client delays $500M contract renewal. Attrition rate climbed to 18%. CFO warned of margin pressure in FY27. Two major brokerages downgraded the stock to HOLD. Insider selling reported by senior executives last week."
+  },
+  {
+    "symbol": "RELIANCE",
+    "date": "2026-03-03",
+    "sentiment_score": 0.72,
+    "sentiment_acceleration": 0.55,
+    "news_volume_spike": 0.60,
+    "narrative_strength": 0.65,
+    "narrative_type": "growth"
+  }
+]

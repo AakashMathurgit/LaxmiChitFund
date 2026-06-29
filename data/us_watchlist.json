@@ -1,0 +1,409 @@
+{
+  "watchlist": [
+    {
+      "symbol": "NVDA",
+      "added_date": "2026-03-14",
+      "reason": "AI/GPU leader \u2014 massive data center growth",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Mag 7 stock"
+    },
+    {
+      "symbol": "TSLA",
+      "added_date": "2026-03-14",
+      "reason": "EV leader + energy + robotics",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "High volatility, momentum play"
+    },
+    {
+      "symbol": "AAPL",
+      "added_date": "2026-03-14",
+      "reason": "Largest US company \u2014 services growth",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Mag 7 stock"
+    },
+    {
+      "symbol": "MSFT",
+      "added_date": "2026-03-14",
+      "reason": "Cloud + AI (Copilot/Azure)",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Mag 7 stock"
+    },
+    {
+      "symbol": "AMZN",
+      "added_date": "2026-03-14",
+      "reason": "E-commerce + AWS cloud",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Mag 7 stock"
+    },
+    {
+      "symbol": "META",
+      "added_date": "2026-03-14",
+      "reason": "Social media + AI + metaverse",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Mag 7 stock"
+    },
+    {
+      "symbol": "GOOGL",
+      "added_date": "2026-03-14",
+      "reason": "Search + Cloud + AI (Gemini)",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Mag 7 stock"
+    },
+    {
+      "symbol": "AMD",
+      "added_date": "2026-03-14",
+      "reason": "GPU/CPU competitor to NVDA",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "AI semiconductor play"
+    },
+    {
+      "symbol": "PLTR",
+      "added_date": "2026-03-14",
+      "reason": "AI/data analytics \u2014 govt + commercial",
+      "priority": "medium",
+      "last_signal": "",
+      "last_signal_date": "",
+      "notes": "High growth, high valuation"
+    },
+    {
+      "symbol": "COIN",
+      "added_date": "2026-03-14",
+      "reason": "Crypto exchange \u2014 proxy for BTC",
+      "priority": "low",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Volatile, correlated to crypto"
+    },
+    {
+      "symbol": "ISRG",
+      "added_date": "2026-03-14",
+      "reason": "Robotic surgery leader (da Vinci)",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Healthcare tech"
+    },
+    {
+      "symbol": "ABBV",
+      "added_date": "2026-03-14",
+      "reason": "Pharma \u2014 immunology + oncology pipeline",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": ""
+    },
+    {
+      "symbol": "MRK",
+      "added_date": "2026-03-14",
+      "reason": "Pharma \u2014 Keytruda oncology blockbuster",
+      "priority": "high",
+      "last_signal": "",
+      "last_signal_date": "",
+      "notes": ""
+    },
+    {
+      "symbol": "ALNY",
+      "added_date": "2026-03-14",
+      "reason": "Alnylam \u2014 RNAi therapeutics pioneer",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Biotech"
+    },
+    {
+      "symbol": "BEPC",
+      "added_date": "2026-03-14",
+      "reason": "Brookfield Renewable \u2014 clean energy",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Renewable energy"
+    },
+    {
+      "symbol": "CLRB",
+      "added_date": "2026-03-14",
+      "reason": "Cellectar Biosciences \u2014 oncology biotech",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Small cap biotech"
+    },
+    {
+      "symbol": "TOVX",
+      "added_date": "2026-03-14",
+      "reason": "Theriva Biologics \u2014 immuno-oncology",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Small cap biotech"
+    },
+    {
+      "symbol": "ANRO",
+      "added_date": "2026-03-14",
+      "reason": "Alto Neuroscience \u2014 precision psychiatry",
+      "priority": "medium",
+      "last_signal": "",
+      "last_signal_date": "",
+      "notes": "Biotech"
+    },
+    {
+      "symbol": "ICU",
+      "added_date": "2026-03-14",
+      "reason": "ICU Medical \u2014 infusion therapy",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Medical devices"
+    },
+    {
+      "symbol": "IQM",
+      "added_date": "2026-03-14",
+      "reason": "User added \u2014 research pending",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": ""
+    },
+    {
+      "symbol": "CTEC",
+      "added_date": "2026-03-14",
+      "reason": "Global X CleanTech ETF",
+      "priority": "low",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Clean energy ETF"
+    },
+    {
+      "symbol": "STXS",
+      "added_date": "2026-03-14",
+      "reason": "Stereotaxis \u2014 robotic surgery navigation",
+      "priority": "low",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Small cap medical"
+    },
+    {
+      "symbol": "PBW",
+      "added_date": "2026-03-14",
+      "reason": "Invesco WilderHill Clean Energy ETF",
+      "priority": "low",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Clean energy ETF"
+    },
+    {
+      "symbol": "QTTB",
+      "added_date": "2026-03-14",
+      "reason": "User added \u2014 research pending",
+      "priority": "low",
+      "last_signal": "",
+      "last_signal_date": "",
+      "notes": ""
+    },
+    {
+      "symbol": "MBOT",
+      "added_date": "2026-03-14",
+      "reason": "Microbot Medical \u2014 micro-robotics",
+      "priority": "low",
+      "last_signal": "HOLD",
+      "last_signal_date": "2026-03-14",
+      "notes": "Small cap medical robotics"
+    },
+    {
+      "symbol": "PLUG",
+      "added_date": "2026-03-14",
+      "reason": "Plug Power \u2014 hydrogen fuel cells",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-14",
+      "notes": "Clean energy / hydrogen"
+    },
+    {
+      "symbol": "FCEL",
+      "added_date": "2026-03-14",
+      "reason": "FuelCell Energy \u2014 hydrogen power",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Clean energy"
+    },
+    {
+      "symbol": "BE",
+      "added_date": "2026-03-14",
+      "reason": "Bloom Energy \u2014 solid oxide fuel cells",
+      "priority": "medium",
+      "last_signal": "",
+      "last_signal_date": "",
+      "notes": "Clean energy"
+    },
+    {
+      "symbol": "RUN",
+      "added_date": "2026-03-14",
+      "reason": "Sunrun \u2014 residential solar",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Solar energy"
+    },
+    {
+      "symbol": "IONQ",
+      "added_date": "2026-03-14",
+      "reason": "IonQ \u2014 quantum computing",
+      "priority": "high",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Quantum computing pure play"
+    },
+    {
+      "symbol": "QBTS",
+      "added_date": "2026-03-14",
+      "reason": "D-Wave Quantum \u2014 quantum computing",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Quantum computing"
+    },
+    {
+      "symbol": "SOUN",
+      "added_date": "2026-03-14",
+      "reason": "SoundHound AI \u2014 voice AI platform",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "AI / voice recognition"
+    },
+    {
+      "symbol": "BBAI",
+      "added_date": "2026-03-14",
+      "reason": "BigBear.ai \u2014 AI analytics for defense",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "AI / defense"
+    },
+    {
+      "symbol": "RIVN",
+      "added_date": "2026-03-14",
+      "reason": "Rivian \u2014 EV trucks & SUVs",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "EV"
+    },
+    {
+      "symbol": "LCID",
+      "added_date": "2026-03-14",
+      "reason": "Lucid Motors \u2014 luxury EV",
+      "priority": "low",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "EV"
+    },
+    {
+      "symbol": "CHPT",
+      "added_date": "2026-03-14",
+      "reason": "ChargePoint \u2014 EV charging network",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "EV infrastructure"
+    },
+    {
+      "symbol": "EVGO",
+      "added_date": "2026-03-14",
+      "reason": "EVgo \u2014 fast charging stations",
+      "priority": "low",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "EV infrastructure"
+    },
+    {
+      "symbol": "SOFI",
+      "added_date": "2026-03-14",
+      "reason": "SoFi \u2014 fintech / digital banking",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Fintech"
+    },
+    {
+      "symbol": "UPST",
+      "added_date": "2026-03-14",
+      "reason": "Upstart \u2014 AI lending platform",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "AI / fintech"
+    },
+    {
+      "symbol": "AFRM",
+      "added_date": "2026-03-14",
+      "reason": "Affirm \u2014 buy now pay later",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Fintech / BNPL"
+    },
+    {
+      "symbol": "DOCN",
+      "added_date": "2026-03-14",
+      "reason": "DigitalOcean \u2014 cloud for SMBs",
+      "priority": "low",
+      "last_signal": "",
+      "last_signal_date": "",
+      "notes": "Cloud infrastructure"
+    },
+    {
+      "symbol": "NET",
+      "added_date": "2026-03-14",
+      "reason": "Cloudflare \u2014 CDN / edge computing",
+      "priority": "medium",
+      "last_signal": "",
+      "last_signal_date": "",
+      "notes": "Cloud / cybersecurity"
+    },
+    {
+      "symbol": "OPEN",
+      "added_date": "2026-03-14",
+      "reason": "Opendoor \u2014 iBuying real estate",
+      "priority": "low",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Real estate tech"
+    },
+    {
+      "symbol": "SAVA",
+      "added_date": "2026-03-14",
+      "reason": "Cassava Sciences \u2014 Alzheimer's drug",
+      "priority": "medium",
+      "last_signal": "SELL",
+      "last_signal_date": "2026-03-26",
+      "notes": "Biotech / high risk"
+    },
+    {
+      "symbol": "VKTX",
+      "added_date": "2026-03-14",
+      "reason": "Viking Therapeutics \u2014 obesity / metabolic",
+      "priority": "high",
+      "last_signal": "",
+      "last_signal_date": "",
+      "notes": "Biotech / GLP-1 competitor"
+    }
+  ]
+}

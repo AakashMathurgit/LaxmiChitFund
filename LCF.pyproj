@@ -1,0 +1,102 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>main.py</StartupFile>
+    <SearchPath>.</SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>LCF</Name>
+    <RootNamespace>LCF</RootNamespace>
+    <InterpreterId>Global|PythonCore|3.11</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Main entry point -->
+    <Compile Include="main.py" />
+    <Compile Include="scripts\ingest_nse_corp_announcements.py" />
+    <Compile Include="src\ingestion\nse\nse_corp_announcements.py" />
+    <Compile Include="src\ingestion\__init__.py" />
+    <!-- Source package init -->
+    <Compile Include="src\__init__.py" />
+    <!-- Utils -->
+    <Compile Include="src\utils\__init__.py" />
+    <Compile Include="src\utils\logger.py" />
+    <!-- Pipeline -->
+    <Compile Include="src\pipeline\__init__.py" />
+    <Compile Include="src\pipeline\orchestrator.py" />
+    <!-- Evaluation -->
+    <Compile Include="src\evaluation\__init__.py" />
+    <!-- Tests -->
+    <Compile Include="src\tests\__init__.py" />
+    <!-- Main agents package -->
+    <Compile Include="src\main\__init__.py" />
+    <Compile Include="src\main\agents\__init__.py" />
+    <!-- Agent interfaces -->
+    <Compile Include="src\main\agents\interfaces\__init__.py" />
+    <Compile Include="src\main\agents\interfaces\agent.py" />
+    <Compile Include="src\main\agents\interfaces\signals.py" />
+    <!-- Agent adapters -->
+    <Compile Include="src\main\agents\adapters\__init__.py" />
+    <Compile Include="src\main\agents\adapters\llm_adapter.py" />
+    <!-- Controllers -->
+    <Compile Include="src\main\controllers\__init__.py" />
+    <Compile Include="src\main\controllers\data_context.py" />
+    <Compile Include="src\main\controllers\data_provider.py" />
+    <Compile Include="src\main\controllers\data_processor.py" />
+    <Compile Include="src\main\controllers\file_data_provider.py" />
+    <Compile Include="src\main\controllers\yahoo_finance_provider.py" />
+    <!-- Agent implementations -->
+    <Compile Include="src\main\agents\event_agent.py" />
+    <Compile Include="src\main\agents\fundamental_agent.py" />
+    <Compile Include="src\main\agents\judge_agent.py" />
+    <Compile Include="src\main\agents\sentiment_agent.py" />
+    <Compile Include="src\main\agents\technical_agent.py" />
+    <!-- Scripts -->
+    <Compile Include="scripts\test_sentiment_judge.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Configuration files -->
+    <Content Include="config.yaml" />
+    <Content Include="requirements.txt" />
+    <Content Include="README.md" />
+    <Content Include=".gitignore" />
+    <!-- Data files -->
+    <Content Include="data\sample_stock_news.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Folders -->
+    <Folder Include="configs\" />
+    <Folder Include="data\" />
+    <Folder Include="docs\" />
+    <Folder Include="notebooks\" />
+    <Folder Include="prompts\" />
+    <Folder Include="rules\" />
+    <Folder Include="scripts\" />
+    <Folder Include="src\" />
+    <Folder Include="src\evaluation\" />
+    <Folder Include="src\ingestion\nse\" />
+    <Folder Include="src\main\" />
+    <Folder Include="src\main\agents\" />
+    <Folder Include="src\main\agents\adapters\" />
+    <Folder Include="src\main\agents\interfaces\" />
+    <Folder Include="src\main\controllers\" />
+    <Folder Include="src\ingestion\" />
+    <Folder Include="src\pipeline\" />
+    <Folder Include="src\tests\" />
+    <Folder Include="src\utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.11" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>

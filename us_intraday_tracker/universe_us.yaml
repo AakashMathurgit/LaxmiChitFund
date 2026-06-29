@@ -1,0 +1,81 @@
+# US Intraday Tracker — editable universe.
+#
+# 5 sectors x 20 tickers = 100 companies. Add/remove tickers freely; the
+# fluctuation scanner reads `all_symbols()` from the `sectors` block.
+#
+# The `peers` block declares cross-ticker relationships used by the
+# CrossTickerAgent to reason about indirect/spillover moves (e.g. a
+# competitor's miss being a tailwind for the mover). Peers are optional per
+# ticker — only the most relevant relationships need to be listed.
+
+sectors:
+  Technology:
+    [AAPL, MSFT, NVDA, AVGO, ORCL, CRM, ADBE, AMD, CSCO, ACN,
+     INTC, IBM, QCOM, TXN, NOW, INTU, AMAT, MU, ADI, LRCX]
+  Financials:
+    [BRK-B, JPM, V, MA, BAC, WFC, GS, MS, AXP, SCHW,
+     C, BLK, SPGI, CB, PGR, MMC, PNC, USB, TFC, COF]
+  Healthcare:
+    [LLY, UNH, JNJ, MRK, ABBV, TMO, ABT, DHR, PFE, AMGN,
+     ISRG, BMY, MDT, GILD, VRTX, CVS, CI, ELV, REGN, ZTS]
+  Energy:
+    [XOM, CVX, COP, SLB, EOG, MPC, PSX, WMB, OXY, VLO,
+     KMI, EQT, OKE, HAL, DVN, BKR, FANG, TRGP, CTRA, LNG]
+  ConsumerDiscretionary:
+    [AMZN, TSLA, HD, MCD, NKE, LOW, SBUX, TJX, BKNG, ORLY,
+     CMG, MAR, GM, F, HLT, ROST, AZO, YUM, DHI, LEN]
+
+peers:
+  NVDA:
+    competitors: [AMD, INTC, AVGO, QCOM]
+    suppliers: [TSM, MU]
+    customers: [MSFT, META, AMZN, ORCL]
+  AMD:
+    competitors: [NVDA, INTC, QCOM]
+    suppliers: [TSM]
+    customers: [MSFT, AMZN, DELL]
+  INTC:
+    competitors: [AMD, NVDA, QCOM, TSM]
+    customers: [DELL, HPQ]
+  AAPL:
+    competitors: [MSFT, GOOGL, SSNLF]
+    suppliers: [TSM, QCOM, AVGO, SWKS]
+  MSFT:
+    competitors: [GOOGL, AMZN, ORCL, CRM]
+    suppliers: [NVDA, AMD]
+  AVGO:
+    competitors: [QCOM, NVDA, MRVL, TXN]
+    customers: [AAPL]
+  ORCL:
+    competitors: [MSFT, CRM, SAP, AMZN]
+  CRM:
+    competitors: [MSFT, ORCL, SAP, NOW]
+  TSLA:
+    competitors: [GM, F, RIVN, LCID, NIO, BYDDY]
+    suppliers: [PANW]
+  GM:
+    competitors: [F, TSLA, TM, STLA]
+  F:
+    competitors: [GM, TSLA, TM, STLA]
+  AMZN:
+    competitors: [WMT, MSFT, GOOGL, TGT]
+  JPM:
+    competitors: [BAC, WFC, C, GS, MS]
+  GS:
+    competitors: [MS, JPM, BAC, C]
+  V:
+    competitors: [MA, AXP, PYPL]
+  MA:
+    competitors: [V, AXP, PYPL]
+  XOM:
+    competitors: [CVX, COP, SHEL, BP]
+  CVX:
+    competitors: [XOM, COP, SHEL, BP]
+  LLY:
+    competitors: [NVO, MRK, PFE, ABBV]
+  MRK:
+    competitors: [PFE, BMY, LLY, ABBV]
+  PFE:
+    competitors: [MRK, BMY, JNJ, ABBV]
+  UNH:
+    competitors: [CI, ELV, CVS, HUM]

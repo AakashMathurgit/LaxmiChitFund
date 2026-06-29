@@ -1,0 +1,23 @@
+{
+  "as_of": "2026-05-31",
+  "currency": "USD",
+  "cash_usd": 1000,
+  "holdings": [
+    {
+      "symbol": "AAPL",
+      "name": "Apple Inc.",
+      "quantity": 20,
+      "avg_cost_usd": 165.5,
+      "purchase_date": "2023-08-10",
+      "sector": "Technology"
+    },
+    {
+      "symbol": "VOO",
+      "name": "Vanguard S&P 500 ETF",
+      "quantity": 12,
+      "avg_cost_usd": 410.0,
+      "purchase_date": "2024-01-22",
+      "sector": "ETF"
+    }
+  ]
+}

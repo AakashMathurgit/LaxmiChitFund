@@ -1,0 +1,48 @@
+# Investor-letter URLs used by ProTraderPortfolioAnalyzer for rationale
+# extraction. Listed newest-first. The analyzer fetches the first URL that
+# returns parseable text (PDFs are skipped — only HTML/text supported).
+#
+# Add/replace freely. Missing letters simply mean "no rationale" (graceful).
+
+"Warren Buffett (Berkshire Hathaway)":
+  letters:
+    - https://www.berkshirehathaway.com/letters/2024ltr.pdf
+    - https://www.berkshirehathaway.com/letters/2023ltr.pdf
+    - https://www.berkshirehathaway.com/letters/2022ltr.pdf
+    - https://www.berkshirehathaway.com/letters/2021ltr.pdf
+    - https://www.berkshirehathaway.com/letters/2020ltr.pdf
+
+"Bill Ackman (Pershing Square)":
+  letters:
+    - https://pershingsquareholdings.com/2024/04/annual-report-2023/
+    - https://pershingsquareholdings.com/2023/04/annual-report-2022/
+
+"Terry Smith (Fundsmith)":
+  letters:
+    - https://www.fundsmith.co.uk/annual-letter/
+    - https://www.fundsmith.co.uk/news/annual-letter-2024/
+
+"Howard Marks (Oaktree Capital)":
+  letters:
+    - https://www.oaktreecapital.com/insights/memo
+    - https://www.oaktreecapital.com/insights
+
+"Seth Klarman (Baupost Group)":
+  letters: []   # Baupost letters are private; only public commentary
+
+"Michael Burry (Scion Asset Mgmt)":
+  letters: []   # Scion does not publish letters publicly
+
+"Stanley Druckenmiller (Duquesne Family Office)":
+  letters: []   # Duquesne does not publish letters publicly
+
+"Li Lu (Himalaya Capital)":
+  letters:
+    - https://www.csh.columbia.edu/sites/default/files/content/CSH%20Speech%202021.pdf
+
+"Mohnish Pabrai (Pabrai Investment Funds)":
+  letters:
+    - https://chaiwithpabrai.com/
+
+# Indian investors typically don't publish letters; rationale stays empty
+# for now (we can add interview/press-release sources later).

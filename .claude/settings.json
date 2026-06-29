@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -iE \"credential|investor_profile|portfolio_\\(in|us|mf\\)\\\\.json|sec_13f|amfi|\\\\.env$\")",
+      "Bash(rm -f *)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\mathuraakash\\source\\repos\\LCF\\.git"
+    ]
+  }
+}

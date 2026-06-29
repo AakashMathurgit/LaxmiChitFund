@@ -1,0 +1,23 @@
+{
+  "as_of": "2026-05-31",
+  "currency": "INR",
+  "cash_inr": 50000,
+  "holdings": [
+    {
+      "symbol": "RELIANCE.NS",
+      "name": "Reliance Industries",
+      "quantity": 25,
+      "avg_cost_inr": 2400.0,
+      "purchase_date": "2024-03-15",
+      "sector": "Energy"
+    },
+    {
+      "symbol": "HDFCBANK.NS",
+      "name": "HDFC Bank",
+      "quantity": 40,
+      "avg_cost_inr": 1450.0,
+      "purchase_date": "2023-11-02",
+      "sector": "Financials"
+    }
+  ]
+}

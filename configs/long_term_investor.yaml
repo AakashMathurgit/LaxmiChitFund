@@ -1,0 +1,84 @@
+# Tuning profile for the long-horizon advisor pipeline.
+# Used by AdvisorOrchestrator. Reuses LCF's mode-config pattern but tuned
+# for 3-month+ holding periods, not swing trades.
+
+mode: long_term_investor
+horizon_months_default: 12
+min_horizon_months: 3
+
+# --- Agent weights when judging a stock/holding ---
+agent_weights:
+  fundamental: 0.30
+  smart_money: 0.20        # ProTraderPortfolioAnalyzer
+  regime: 0.10
+  sentiment: 0.10          # de-emphasized for long horizon
+  event: 0.10
+  technical_long_term: 0.10  # only SMA200 + 1y trend, no RSI/MACD
+  valuation_margin: 0.10
+
+# --- Discovery filters ---
+discovery:
+  enabled: true
+  universe:
+    us: ["sp500"]
+    in: ["nifty500"]
+  quality_filters:
+    min_roe_pct: 12.0
+    max_debt_to_equity: 1.5
+    min_revenue_cagr_3y_pct: 8.0
+    max_pe_ratio: 40.0
+    min_market_cap_usd: 1_000_000_000
+  max_new_ideas_per_class: 3
+
+# --- Smart money / pro-trader analyzer ---
+smart_money:
+  enabled: true
+  watchlist_path: "data/pro_traders/watchlist.yaml"
+  cache_dir: "data/pro_traders"
+  refresh_days:
+    sec_13f: 30
+    nse_bulk_deals: 1
+    amfi_portfolios: 30
+    investor_letters: 90
+  min_consensus_holders: 2
+
+# --- Mutual fund evaluation ---
+mutual_funds:
+  enabled: true
+  data_source: "mfapi"            # AMFI via mfapi.in
+  rolling_return_years: [3, 5]
+  min_aum_cr: 500
+  max_expense_ratio_pct: 1.5
+  prefer_direct_growth: true
+
+# --- Asset allocation defaults (overridden by investor_profile.yaml) ---
+default_allocation:
+  us_equity: 25
+  in_equity: 35
+  mf_equity: 20
+  mf_debt: 10
+  etf: 5
+  gold: 3
+  cash: 2
+rebalance_drift_threshold_pct: 5
+
+# --- Risk management ---
+risk:
+  max_single_position_pct: 8
+  max_sector_concentration_pct: 25
+  max_single_fund_pct: 15
+  min_cash_buffer_pct: 2
+
+# --- Tax (India) ---
+tax_in:
+  stcg_equity_pct: 20            # short-term capital gain (< 12m)
+  ltcg_equity_pct: 12.5          # long-term capital gain
+  ltcg_exemption_lakh: 1.25
+  stcg_debt_slab_rate: true
+  hold_to_ltcg_buffer_days: 30   # warn if selling < 30 days before LTCG eligibility
+
+# --- Reporting cadence ---
+reporting:
+  default_cadence: "monthly"     # monthly | quarterly
+  output_dir: "data/advisor_reports"
+  formats: ["markdown", "json"]

@@ -1,0 +1,24 @@
+{
+  "as_of": "2026-05-31",
+  "currency": "INR",
+  "holdings": [
+    {
+      "scheme_code": "122639",
+      "scheme_name": "Parag Parikh Flexi Cap Fund - Direct - Growth",
+      "units": 1850.234,
+      "avg_nav_inr": 55.42,
+      "purchase_date": "2022-06-01",
+      "sip_amount_inr": 10000,
+      "category": "Flexi Cap"
+    },
+    {
+      "scheme_code": "120828",
+      "scheme_name": "Quant Small Cap Fund - Direct - Growth",
+      "units": 410.5,
+      "avg_nav_inr": 140.0,
+      "purchase_date": "2023-04-12",
+      "sip_amount_inr": 5000,
+      "category": "Small Cap"
+    }
+  ]
+}

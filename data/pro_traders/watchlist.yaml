@@ -1,0 +1,90 @@
+# Investors tracked by ProTraderPortfolioAnalyzer.
+# Edit freely. CIKs are SEC central index keys used by EDGAR.
+# Indian investors are tracked via NSE/BSE bulk-deal scans + quarterly
+# shareholding patterns (no CIK).
+
+us_investors:
+  - name: "Warren Buffett (Berkshire Hathaway)"
+    cik: "0001067983"
+    weight: 1.0
+  - name: "Michael Burry (Scion Asset Mgmt)"
+    cik: "0001649339"
+    weight: 0.8
+  - name: "Bill Ackman (Pershing Square)"
+    cik: "0001336528"
+    weight: 0.9
+  - name: "Stanley Druckenmiller (Duquesne Family Office)"
+    cik: "0001536411"
+    weight: 0.85
+  - name: "Seth Klarman (Baupost Group)"
+    cik: "0001061165"
+    weight: 0.85
+  - name: "Li Lu (Himalaya Capital)"
+    cik: "0001709323"
+    weight: 0.8
+  - name: "Terry Smith (Fundsmith)"
+    cik: "0001569205"
+    weight: 0.75
+  - name: "Mohnish Pabrai (Pabrai Investment Funds)"
+    cik: "0001173334"
+    weight: 0.75
+  - name: "Howard Marks (Oaktree Capital)"
+    cik: "0000949509"
+    weight: 0.7
+
+in_investors:
+  # Tracked via NSE bulk deals + BSE shareholding pattern (> 1% holders).
+  - name: "Rare Enterprises (Rakesh Jhunjhunwala estate)"
+    aliases: ["Rakesh Jhunjhunwala", "Rekha Jhunjhunwala", "Rare Enterprises"]
+    weight: 1.0
+  - name: "Radhakishan Damani"
+    aliases: ["Radhakishan Damani", "Derive Trading", "Bright Star Investments"]
+    weight: 1.0
+  - name: "Mukul Agrawal"
+    aliases: ["Mukul Mahavir Agrawal", "Mukul Agrawal"]
+    weight: 0.85
+  - name: "Vijay Kedia"
+    aliases: ["Vijay Kishanlal Kedia", "Kedia Securities"]
+    weight: 0.8
+  - name: "Ashish Kacholia"
+    aliases: ["Ashish Kacholia", "Lucky Securities"]
+    weight: 0.8
+  - name: "Dolly Khanna"
+    aliases: ["Dolly Khanna", "Rajiv Khanna"]
+    weight: 0.7
+  - name: "Porinju Veliyath"
+    aliases: ["Porinju Veliyath", "Equity Intelligence"]
+    weight: 0.7
+
+mutual_fund_managers:
+  # Tracked via AMFI monthly portfolio disclosures.
+  - name: "Parag Parikh Flexi Cap Fund"
+    amfi_scheme_codes: ["122639"]
+    manager: "Rajeev Thakkar / Raunak Onkar"
+    weight: 0.9
+  - name: "HDFC Flexi Cap Fund"
+    amfi_scheme_codes: ["101044"]
+    manager: "Roshi Jain"
+    weight: 0.8
+  - name: "Mirae Asset Large Cap Fund"
+    amfi_scheme_codes: ["118834"]
+    manager: "Gaurav Khandelwal / Gaurav Misra"
+    weight: 0.75
+  - name: "Nippon India Small Cap Fund"
+    amfi_scheme_codes: ["113177"]
+    manager: "Samir Rachh"
+    weight: 0.8
+  - name: "Quant Small Cap Fund"
+    amfi_scheme_codes: ["120828"]
+    manager: "Sandeep Tandon team"
+    weight: 0.75
+
+# How signals are aggregated across regions.
+aggregation:
+  region_weights:
+    US: 1.0
+    IN: 1.0
+    MF: 0.6
+  recency_decay_quarters: 4        # older filings count for less
+  min_holders_for_consensus: 2
+  contrarian_threshold_pct: 30     # > 30% of trackers selling while score positive -> contrarian flag

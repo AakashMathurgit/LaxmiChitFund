@@ -1,0 +1,206 @@
+{
+  "timestamp": "2026-05-09T00:46:54.633430",
+  "market": "US",
+  "mode": "adaptive",
+  "type": "future_prediction",
+  "symbols": [
+    "AMZN"
+  ],
+  "results": [
+    {
+      "symbol": "AMZN",
+      "date": "2026-05-08",
+      "current_price": 272.8500061035156,
+      "technical": {
+        "success": true,
+        "run_id": "2fd65eb5-6a1e-422c-9fef-d9560122db24",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1778267785985,
+          "completed_epoch_ms": 1778267785986,
+          "duration_ms": 1
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "c52723fe1edf6e451d2e3a24f936b8a369017a82e8d94ac86e9b750354503aab",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "tech_score": 0.85,
+            "tech_rsi": 0.7970999999999999,
+            "tech_macd": 1.0,
+            "tech_volatility": 0.0268,
+            "tech_breakout": 0.0,
+            "tech_trend": 1.0
+          },
+          "raw_signal": "TechnicalSignal(technical_score=0.85, rsi=79.71, macd_signal='buy', volatility=0.0268, breakout_flag=False, trend_direction='bullish', support_level=235.75, resistance_level=278.56)"
+        }
+      },
+      "fundamental": {
+        "success": true,
+        "run_id": "2fd65eb5-6a1e-422c-9fef-d9560122db24",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1778267785990,
+          "completed_epoch_ms": 1778267785990,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "53049163a5d1539f63114b2ef9ee0d99325377e332ca250708783d506766a0da",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "fund_score": 0.3779,
+            "fund_valuation": 0.0,
+            "fund_growth": 0.532,
+            "fund_health": 0.4058
+          },
+          "raw_signal": "FundamentalSignal(fundamental_score=0.3779, valuation_label='overvalued', growth_score=0.532, financial_health_score=0.4058, pe_ratio=32.676647, forward_pe=27.642332)"
+        }
+      },
+      "sentiment": {
+        "success": true,
+        "run_id": "2fd65eb5-6a1e-422c-9fef-d9560122db24",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1778267785990,
+          "completed_epoch_ms": 1778267807292,
+          "duration_ms": 21302
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "bd15ddffcf6bf2d7652c5e518873c48bee91e896aad1e79a2afad0c19baeae82",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "sent_score": 0.5,
+            "sent_net_ratio": 0.0,
+            "sent_trend": 0.5,
+            "sent_confidence": 0.0
+          },
+          "raw_signal": "SentimentSignal(sentiment_score=0.5, positive_news_count=0, negative_news_count=0, sentiment_trend='stable', news_confidence_score=0.0)"
+        }
+      },
+      "event": {
+        "success": true,
+        "run_id": "2fd65eb5-6a1e-422c-9fef-d9560122db24",
+        "rules_version": "1.0.0",
+        "timing": {
+          "started_epoch_ms": 1778267807292,
+          "completed_epoch_ms": 1778267807292,
+          "duration_ms": 0
+        },
+        "errors": [],
+        "provenance_id": null,
+        "integrity": {
+          "checksum": "6bdfe7b97dcb370de0a5b2ebbd31f4f7b5927dd2bf83e2b7ba79d6887955beb7",
+          "algorithm": "SHA256"
+        },
+        "payload": {
+          "signal": {
+            "evt_score": 0.1602,
+            "evt_earnings": 0.0,
+            "evt_risk": 0.5,
+            "evt_gap_up": 0.0,
+            "evt_gap_down": 0.0
+          },
+          "raw_signal": "EventSignal(event_score=0.1602, earnings_impact_flag=False, event_risk_level='medium', gap_up_flag=False, gap_down_flag=False, event_type=None, event_description=None)"
+        }
+      },
+      "regime": {
+        "regime": "sideways",
+        "vol_state": "moderate",
+        "confidence": 0.5
+      },
+      "prediction": {
+        "symbol": "AMZN",
+        "date": "2026-05-08",
+        "current_price": 272.85,
+        "market_cap": "$2.94T",
+        "sector": "Consumer Cyclical",
+        "one_week": {
+          "horizon": "1_week",
+          "horizon_label": "1 Week",
+          "predicted_price": 276.0,
+          "predicted_change_pct": 1.2,
+          "confidence": 0.7,
+          "direction": "bullish",
+          "key_drivers": [
+            "Strong bullish trend with MACD buy signal",
+            "RSI at 79.7 indicates overbought but momentum persists",
+            "Price near resistance at $278.56"
+          ],
+          "risks": [
+            "Overbought RSI could trigger short-term pullback",
+            "Low trading volume (0.46x 20d avg) may limit upside"
+          ],
+          "reasoning": "Technical momentum remains strong (MACD buy, bullish trend), but RSI is overbought and price is near resistance. Expect modest upside with risk of minor pullback."
+        },
+        "one_month": {
+          "horizon": "1_month",
+          "horizon_label": "1 Month",
+          "predicted_price": 272.0,
+          "predicted_change_pct": -0.3,
+          "confidence": 0.6,
+          "direction": "neutral",
+          "key_drivers": [
+            "Sideways market regime and moderate volatility",
+            "Recent sharp gains (+16.78% in 1 month) suggest consolidation",
+            "No major upcoming catalysts or news"
+          ],
+          "risks": [
+            "Profit-taking after strong run-up",
+            "Unexpected macro or sector news"
+          ],
+          "reasoning": "After a rapid 1-month rally and with no new catalysts, the stock is likely to consolidate near current levels, especially given overbought technicals and a sideways market regime."
+        },
+        "one_quarter": {
+          "horizon": "1_quarter",
+          "horizon_label": "1 Quarter",
+          "predicted_price": 265.0,
+          "predicted_change_pct": -2.9,
+          "confidence": 0.5,
+          "direction": "neutral",
+          "key_drivers": [
+            "Valuation remains stretched (PE 32.7, overvalued)",
+            "Fundamental score is low (0.38/1.0)",
+            "Revenue growth solid at 16.6% but financial health moderate"
+          ],
+          "risks": [
+            "Market rotation out of overvalued tech",
+            "Potential for sector volatility or macro headwinds"
+          ],
+          "reasoning": "Fundamental overvaluation and moderate financial health suggest limited upside over the quarter, with risk of mild mean reversion despite strong growth."
+        },
+        "one_year": {
+          "horizon": "1_year",
+          "horizon_label": "1 Year",
+          "predicted_price": 295.0,
+          "predicted_change_pct": 8.1,
+          "confidence": 0.4,
+          "direction": "bullish",
+          "key_drivers": [
+            "Sustained revenue growth (16.6% YoY)",
+            "Strong ROE (24.3%) and profit margin (12.2%)",
+            "Analyst consensus: strong buy"
+          ],
+          "risks": [
+            "High valuation could compress if growth slows",
+            "Sector rotation or macroeconomic downturn"
+          ],
+          "reasoning": "Despite short-term overvaluation, Amazon's strong growth, profitability, and analyst support point to long-term upside, though confidence is tempered by valuation and market regime risks."
+        },
+        "overall_outlook": "neutral",
+        "overall_confidence": 0.6,
+        "summary": "Amazon is technically extended and overbought in the short term, likely leading to near-term consolidation after recent strong gains. Over the next year, robust growth and profitability support a bullish long-term outlook, but high valuation and a sideways market regime limit confidence and upside in the intermediate term."
+      }
+    }
+  ]
+}
