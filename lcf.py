@@ -75,6 +75,26 @@ def _print_result(res) -> None:
             print(f"      {d.action:5s} {d.symbol:6s} (conf {d.confidence:.0%}) {d.detail}")
 
 
+def _log_env_check() -> None:
+    """Log which key env vars are present (masked) so the container/Portal logs
+    confirm config loaded — without ever printing the secret values."""
+    keys = [
+        "AZURE_OPENAI_ENDPOINT", "AZURE_OPENAI_API_KEY",
+        "ALPACA_ENDPOINT", "ALPACA_KEY_ID", "ALPACA_SECRET_KEY",
+        "PUSHOVER_TOKEN", "PUSHOVER_USER",
+    ]
+    print("[startup] environment check:")
+    for k in keys:
+        v = os.environ.get(k)
+        if not v:
+            shown = "(not set — falling back to credentials.yaml if present)"
+        elif k.endswith(("ENDPOINT",)):
+            shown = v  # endpoints are not secret
+        else:
+            shown = (v[:4] + "…" + v[-2:]) if len(v) > 8 else "set"
+        print(f"[startup]   {k:22s} = {shown}")
+
+
 # ---------------------------------------------------------------------------
 # Commands
 # ---------------------------------------------------------------------------
@@ -164,11 +184,23 @@ def cmd_schedule(rt, args):
     print(f"#  Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"{'#' * 60}\n")
 
+    _log_env_check()
+    print(flush=True)
+
     ticks = 0
     while True:
         ticks += 1
         now = time.time()
         now_utc = datetime.now(timezone.utc)
+
+        # Lightweight per-tick liveness so the Portal log stream always shows
+        # movement (otherwise it looks dead between scheduled flow runs).
+        due_in = {f.name: max(0, int(intervals[f.name] - (now - last_run[f.name])))
+                  for f in flows}
+        soonest_name = min(due_in, key=due_in.get) if due_in else "-"
+        soonest_min = (due_in[soonest_name] // 60) if due_in else 0
+        print(f"[tick {ticks}] {now_utc.strftime('%H:%M:%SZ')} alive — "
+              f"next: {soonest_name} in ~{soonest_min}m", flush=True)
 
         for f in flows:
             due = (now - last_run[f.name]) >= intervals[f.name]
