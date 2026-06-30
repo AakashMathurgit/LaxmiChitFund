@@ -452,14 +452,20 @@ class USRSSNewsProvider(DataProvider):
     # StockDataContext enrichment
     # ------------------------------------------------------------------
 
-    def enrich_stock_context(self, stock_ctx: StockDataContext, result: DataProviderResult) -> StockDataContext:
+    def enrich_stock_context(self, stock_ctx: StockDataContext, result=None) -> StockDataContext:
         symbol = stock_ctx.symbol.upper()
+        # data_processor.build_stock_context() calls this as
+        # enrich_stock_context(ctx, symbol) — i.e. `result` is the symbol string.
+        # Older callers pass a pre-fetched DataProviderResult. Support both:
+        # fetch internally when we weren't handed a result.
+        if not isinstance(result, DataProviderResult):
+            result = self.fetch([stock_ctx.symbol])
         for news_item in result.get_data(DataType.NEWS):
             if news_item.symbol == symbol:
                 stock_ctx.news_items.append(news_item)
         for event in result.get_data(DataType.EVENTS):
             if event.symbol == symbol:
-                stock_ctx.events.append(event)
+                stock_ctx.event_data.append(event)
         return stock_ctx
 
     # ------------------------------------------------------------------

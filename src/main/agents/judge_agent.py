@@ -60,11 +60,33 @@ class JudgeAgent(Agent):
         "sim_pos_rate":   0.04,
     }
 
+    # Neutral resting value of each weighted feature. The rule-based score is
+    # computed as a DEVIATION from these so a "nothing stands out" stock maps to
+    # ~0.5 (not biased low). Directional 0-1 scores rest at 0.5; binary flags and
+    # magnitude/return features rest at 0.0 (absent => no signal => no nudge).
+    _NEUTRAL_VALUES: Dict[str, float] = {
+        "tech_score":    0.5,
+        "tech_trend":    0.5,
+        "tech_macd":     0.5,
+        "tech_breakout": 0.0,
+        "fund_score":    0.5,
+        "fund_growth":   0.5,
+        "fund_health":   0.5,
+        "sent_score":    0.5,
+        "sent_net_ratio": 0.5,
+        "sent_trend":    0.5,
+        "evt_score":     0.0,
+        "evt_gap_up":    0.0,
+        "evt_earnings":  0.0,
+        "sim_avg_return": 0.0,
+        "sim_pos_rate":  0.0,
+    }
+
     # Decision thresholds
     BUY_THRESHOLD = 0.65
     SELL_THRESHOLD = 0.35
     MIN_EXPECTED_RETURN = 0.015       # 1.5 %
-    MAX_DOWNSIDE_RISK = 0.25          # 25 %
+    MAX_DOWNSIDE_RISK = 0.35          # symmetric with BUY_THRESHOLD (1 - 0.65)
     MAX_POSITION_SIZE_PCT = 0.02      # 2 % of capital
 
     def __init__(
@@ -116,17 +138,23 @@ class JudgeAgent(Agent):
     # ------------------------------------------------------------------
 
     def _score_rule_based(self, features: Dict[str, Any]) -> float:
-        """Weighted linear combination → probability proxy in [0, 1]."""
+        """Weighted deviation-from-neutral → probability proxy in [0, 1].
+
+        Each feature contributes ``weight * (value - neutral)`` so a stock whose
+        signals all sit at their neutral resting points scores ~0.5. Bullish
+        features push the score up, bearish features push it down, symmetrically.
+        """
         total = 0.0
         weight_sum = 0.0
         for key, w in self._weights.items():
             val = features.get(key)
             if val is not None and isinstance(val, (int, float)):
-                total += w * float(val)
+                neutral = self._NEUTRAL_VALUES.get(key, 0.5)
+                total += w * (float(val) - neutral)
                 weight_sum += w
         if weight_sum == 0:
             return 0.5
-        return max(0.0, min(1.0, total / weight_sum))
+        return max(0.0, min(1.0, 0.5 + total / weight_sum))
 
     def _score_ml(self, features: Dict[str, Any]) -> float:
         """Use the trained ML model to predict P(up_5d)."""
@@ -182,7 +210,7 @@ class JudgeAgent(Agent):
         if (
             prob_up >= self.BUY_THRESHOLD
             and expected_return >= self.MIN_EXPECTED_RETURN
-            and prob_down < self.MAX_DOWNSIDE_RISK
+            and prob_down <= self.MAX_DOWNSIDE_RISK
             and regime != "bear_trend"
         ):
             decision = "BUY"

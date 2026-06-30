@@ -437,6 +437,7 @@ class NSECorporateProvider(DataProvider):
     def enrich_stock_context(
         self,
         ctx: "StockDataContext",
+        symbol: "Optional[str]" = None,
         **kwargs
     ) -> None:
         """Enrich a StockDataContext with NSE corporate data.
@@ -447,6 +448,9 @@ class NSECorporateProvider(DataProvider):
         
         Args:
             ctx: StockDataContext to enrich
+            symbol: Optional symbol (data_processor passes it positionally);
+                the symbol is read from ``ctx.symbol`` so this is accepted for
+                signature compatibility and otherwise unused.
         """
         from .data_context import StockDataContext
         

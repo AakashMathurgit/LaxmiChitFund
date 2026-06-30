@@ -92,6 +92,11 @@ position_sizing:
   fallback_equity: 100000       # used to size if the broker equity query fails
 
 # Brokers — every available one fires on each BUY/SELL (plus a Pushover ping).
+# Trading guards (apply to ALL flows: intraday + swing).
+trading:
+  sell_only_if_held: true       # true = only SELL a stock you actually hold
+                                # (never open a short). false = allow shorting.
+
 # Vested broker (buy/sell API layer)
 vested:
   mode: "paper"                 # "paper" (logs orders) | "live" (not implemented)

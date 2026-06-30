@@ -293,7 +293,12 @@ def _trade(final_actions, cand_by_symbol, cfg, mode, order_qty):
         fallback_eq = float(cfg.get("position_sizing", {}).get("fallback_equity", 100000))
         equity = router.account_equity(default=fallback_eq)
         bp = router.buying_power(default=equity)
+        # Live holdings in the SWING account — for SELL sizing & BUY exposure cap.
+        portfolio_ctx = router.portfolio_context()
+        max_pos_pct = float(cfg.get("position_sizing", {}).get("max_position_pct", 20.0)) / 100.0
+        cap_equity = portfolio_ctx.total_equity or equity
         print(f"    Sizing: method={sizer.method}, equity=${equity:,.0f}")
+        print(f"    Portfolio snapshot: {portfolio_ctx.summary_line()}")
 
         for r in final_actions:
             sym = r["symbol"]
@@ -302,8 +307,33 @@ def _trade(final_actions, cand_by_symbol, cfg, mode, order_qty):
             price = m.current if m and m.current else 0.0
             if not price:
                 continue
-            stop = (r.get("trade_plan") or {}).get("stop_loss_price", 0.0)
-            qty = sizer.size(equity, price, stop_loss=stop, strategy="swing", buying_power=bp)
+
+            if action == "SELL":
+                # Sell the actual held quantity (never size a SELL larger than
+                # the position). The router also blocks SELLs on unheld names.
+                held = int(portfolio_ctx.held_qty(sym))
+                if held <= 0:
+                    print(f"    [{sym}] SELL but not held — skipping")
+                    continue
+                qty = held
+            else:  # BUY
+                stop = (r.get("trade_plan") or {}).get("stop_loss_price", 0.0)
+                qty = sizer.size(equity, price, stop_loss=stop, strategy="swing", buying_power=bp)
+                # Exposure-aware trim: keep (existing + new) within the cap.
+                pos = portfolio_ctx.position(sym)
+                held_value = abs(pos.market_value) if pos else 0.0
+                room_value = max_pos_pct * cap_equity - held_value
+                if room_value <= 0:
+                    print(f"    [{sym}] BUY skipped — already at/above {max_pos_pct:.0%} position cap")
+                    continue
+                max_add = int(room_value // price)
+                if max_add <= 0:
+                    print(f"    [{sym}] BUY skipped — no room under position cap")
+                    continue
+                if qty > max_add:
+                    print(f"    [{sym}] BUY trimmed {qty}->{max_add} (position cap, holding ${held_value:,.0f})")
+                    qty = max_add
+
             if qty <= 0:
                 print(f"    [{sym}] sized 0 shares — skipping")
                 continue

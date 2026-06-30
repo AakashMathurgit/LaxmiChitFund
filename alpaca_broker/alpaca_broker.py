@@ -15,7 +15,7 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Dict, Optional
+from typing import Any, Dict, List, Optional
 
 import requests
 import yaml
@@ -207,6 +207,55 @@ class AlpacaBroker(BrokerInterface):
             return float(info.get("buying_power", 0.0) or 0.0)
         except (TypeError, ValueError):
             return 0.0
+
+    def get_position_qty(self, symbol: str) -> float:
+        """Currently held quantity for `symbol` (0.0 if no open position).
+
+        Uses Alpaca's GET /v2/positions/{symbol}, which returns HTTP 404 when no
+        position is held. Any error is treated as "unknown" and returns 0.0.
+        """
+        if not symbol or not self.is_available():
+            return 0.0
+        try:
+            resp = requests.get(
+                f"{self._config.endpoint}/positions/{symbol.upper()}",
+                headers=self._headers(),
+                timeout=self._config.timeout_secs,
+            )
+            if resp.status_code == 200:
+                return float(resp.json().get("qty", 0.0) or 0.0)
+            if resp.status_code == 404:
+                return 0.0
+            self._logger.debug(f"position fetch http {resp.status_code} for {symbol}")
+        except Exception as e:
+            self._logger.debug(f"position fetch failed for {symbol}: {e}")
+        return 0.0
+
+    def get_positions(self) -> List[Dict[str, Any]]:
+        """All currently open positions as a list of raw Alpaca position dicts.
+
+        Uses Alpaca's GET /v2/positions (no symbol = every open position) so the
+        whole portfolio can be fetched in a single call instead of one request
+        per ticker. Returns an empty list on any error or when unavailable.
+
+        Each dict contains (among others): symbol, qty, avg_entry_price,
+        current_price, market_value, unrealized_pl, unrealized_plpc.
+        """
+        if not self.is_available():
+            return []
+        try:
+            resp = requests.get(
+                f"{self._config.endpoint}/positions",
+                headers=self._headers(),
+                timeout=self._config.timeout_secs,
+            )
+            if resp.status_code == 200:
+                data = resp.json()
+                return data if isinstance(data, list) else []
+            self._logger.debug(f"positions fetch http {resp.status_code}")
+        except Exception as e:
+            self._logger.debug(f"positions fetch failed: {e}")
+        return []
 
     def get_order_status(self, order_id: str) -> str:
         if not order_id or not self.is_available():

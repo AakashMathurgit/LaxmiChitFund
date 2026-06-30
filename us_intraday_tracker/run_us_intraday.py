@@ -189,6 +189,14 @@ def main(argv=None):
     news_cache = NewsCache(US_NEWS_CACHE_PATH) if os.path.exists(US_NEWS_CACHE_PATH) else None
     cross_agent = CrossTickerAgent()
 
+    # Live portfolio snapshot (Alpaca) — fetched ONCE here, then reused for LLM
+    # holdings context below and for SELL sizing / BUY exposure gating in _trade.
+    from src.runtime import BrokerRouter
+    from src.runtime.portfolio_context import PortfolioContext
+    trade_router = BrokerRouter(cfg) if args.auto_trade else None
+    portfolio_ctx = trade_router.portfolio_context() if trade_router else PortfolioContext.empty()
+    print(f"    Portfolio snapshot: {portfolio_ctx.summary_line()}")
+
     for r in results:
         symbol = r.get("symbol")
         if not symbol or "error" in r:
@@ -205,7 +213,8 @@ def main(argv=None):
                     peer_news[peer] = pn
 
         cross = cross_agent.correlate(
-            symbol, move_pct, own_news=own_news, peer_news=peer_news, llm=orchestrator.llm
+            symbol, move_pct, own_news=own_news, peer_news=peer_news, llm=orchestrator.llm,
+            holding_note=portfolio_ctx.holding_note(symbol),
         )
         r["cross_ticker"] = cross.to_dict()
 
@@ -230,7 +239,8 @@ def main(argv=None):
     # --- 7. Trade (only if broker available) ---
     print(f"\n[6] Trade (auto_trade={args.auto_trade})...")
     if args.auto_trade and final_actions:
-        _trade(final_actions, mover_by_symbol, cfg, args.mode, results)
+        _trade(final_actions, mover_by_symbol, cfg, args.mode, results,
+               router=trade_router, portfolio_ctx=portfolio_ctx)
     elif not args.auto_trade:
         print("    Auto-trade disabled — notify only.")
     else:
@@ -280,21 +290,29 @@ def _notify(final_actions, mover_by_symbol):
         print(f"    [WARN] Notify failed: {e}")
 
 
-def _trade(final_actions, mover_by_symbol, cfg, mode, all_results):
+def _trade(final_actions, mover_by_symbol, cfg, mode, all_results, router=None, portfolio_ctx=None):
     try:
         from src.runtime import BrokerRouter
         from src.runtime.position_sizer import PositionSizer
-        router = BrokerRouter(cfg)
+        if router is None:
+            router = BrokerRouter(cfg)
         if not router.available:
             print("    No broker available — notify only, no orders.")
             return
         print(f"    Brokers firing on each signal: {', '.join(router.available)}")
+
+        if portfolio_ctx is None:
+            portfolio_ctx = router.portfolio_context()
 
         # Shared position sizer — sizes orders off the live account equity.
         sizer = PositionSizer(cfg)
         fallback_eq = float(cfg.get("position_sizing", {}).get("fallback_equity", 100000))
         equity = router.account_equity(default=fallback_eq)
         bp = router.buying_power(default=equity)
+        # Per-name hard cap (% of equity), used to gate/trim BUYs given what we
+        # already hold so a fresh BUY never pushes a name past the cap.
+        max_pos_pct = float(cfg.get("position_sizing", {}).get("max_position_pct", 20.0)) / 100.0
+        cap_equity = portfolio_ctx.total_equity or equity
         print(f"    Sizing: method={sizer.method}, equity=${equity:,.0f}")
 
         for r in final_actions:
@@ -304,8 +322,33 @@ def _trade(final_actions, mover_by_symbol, cfg, mode, all_results):
             price = m.current if m and m.current else 0.0
             if not price:
                 continue
-            stop = (r.get("trade_plan") or {}).get("stop_loss_price", 0.0)
-            qty = sizer.size(equity, price, stop_loss=stop, strategy="intraday", buying_power=bp)
+
+            if action == "SELL":
+                # Sell the actual held quantity (never size a SELL larger than
+                # the position). The router also blocks SELLs on unheld names.
+                held = int(portfolio_ctx.held_qty(sym))
+                if held <= 0:
+                    print(f"    [{sym}] SELL but not held — skipping")
+                    continue
+                qty = held
+            else:  # BUY
+                stop = (r.get("trade_plan") or {}).get("stop_loss_price", 0.0)
+                qty = sizer.size(equity, price, stop_loss=stop, strategy="intraday", buying_power=bp)
+                # Exposure-aware trim: keep (existing + new) within the cap.
+                pos = portfolio_ctx.position(sym)
+                held_value = abs(pos.market_value) if pos else 0.0
+                room_value = max_pos_pct * cap_equity - held_value
+                if room_value <= 0:
+                    print(f"    [{sym}] BUY skipped — already at/above {max_pos_pct:.0%} position cap")
+                    continue
+                max_add = int(room_value // price)
+                if max_add <= 0:
+                    print(f"    [{sym}] BUY skipped — no room under position cap")
+                    continue
+                if qty > max_add:
+                    print(f"    [{sym}] BUY trimmed {qty}->{max_add} (position cap, holding ${held_value:,.0f})")
+                    qty = max_add
+
             if qty <= 0:
                 print(f"    [{sym}] sized 0 shares — skipping")
                 continue

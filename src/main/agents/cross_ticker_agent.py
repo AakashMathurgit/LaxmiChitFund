@@ -93,10 +93,15 @@ class CrossTickerAgent(Agent):
         move_pct: float,
         own_news: List[Any],
         peer_news: Dict[str, List[Any]],
+        holding_note: str = "",
     ) -> str:
         lines = [
             f"Stock: {symbol}",
             f"Intraday move: {move_pct:+.2f}%",
+        ]
+        if holding_note:
+            lines.append(f"Position: {holding_note}")
+        lines += [
             "",
             f"{symbol} own news:",
         ]
@@ -127,8 +132,11 @@ class CrossTickerAgent(Agent):
         own_news: List[Any],
         peer_news: Dict[str, List[Any]],
         llm: Any,
+        holding_note: str = "",
     ) -> Dict[str, Any]:
-        user_prompt = self._format_for_llm(symbol, move_pct, own_news, peer_news)
+        user_prompt = self._format_for_llm(
+            symbol, move_pct, own_news, peer_news, holding_note
+        )
         try:
             return llm.invoke_json(
                 system_prompt=_CROSS_TICKER_SYSTEM_PROMPT,
@@ -222,13 +230,16 @@ class CrossTickerAgent(Agent):
         own_news: Optional[List[Any]] = None,
         peer_news: Optional[Dict[str, List[Any]]] = None,
         llm: Any = None,
+        holding_note: str = "",
     ) -> CrossTickerSignal:
         own_news = own_news or []
         peer_news = peer_news or {}
 
         raw: Dict[str, Any] = {}
         if llm:
-            raw = self._correlate_with_llm(symbol, move_pct, own_news, peer_news, llm)
+            raw = self._correlate_with_llm(
+                symbol, move_pct, own_news, peer_news, llm, holding_note
+            )
             if not raw or raw.get("_parse_error"):
                 raw = {}
         if not raw:
