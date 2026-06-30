@@ -203,6 +203,26 @@ class PredictUSFlow(Flow):
             return FlowResult(self.name, ts, ok=False, error=str(e))
 
 
+class CompareFlow(Flow):
+    name = "compare"
+    horizon = "report"
+    cadence = "weekly"
+
+    def run(self, rt: Any, **opts) -> FlowResult:
+        ts = self._now()
+        try:
+            rc = self._run_script("analytics/run_strategy_comparison.py", [], timeout=300)
+            data = self._load_json(os.path.join(_ROOT, "data", "strategy_comparison.json")) or {}
+            comp = data.get("comparison", {})
+            m = comp.get("metrics", {})
+            winner = data.get("analysis", {}).get("winner") or comp.get("winner") or "?"
+            parts = [f"{n}:${m[n]['total_pl']:+,.0f}" for n in ("intraday", "swing") if n in m]
+            return FlowResult(self.name, ts, ok=(rc == 0),
+                              summary=f"winner={winner} | " + " ".join(parts))
+        except Exception as e:
+            return FlowResult(self.name, ts, ok=False, error=str(e))
+
+
 class AdvisorFlow(Flow):
     name = "advise"
     horizon = "long_term"

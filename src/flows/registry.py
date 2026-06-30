@@ -11,6 +11,7 @@ from .adapters import (
     INDailyFlow,
     PredictUSFlow,
     AdvisorFlow,
+    CompareFlow,
 )
 
 # Note: us-daily (USDailyFlow) was superseded by us-swing — a 100-stock,
@@ -23,6 +24,7 @@ _FLOWS: Dict[str, Flow] = {
         INDailyFlow(),
         PredictUSFlow(),
         AdvisorFlow(),
+        CompareFlow(),
     ]
 }
 
