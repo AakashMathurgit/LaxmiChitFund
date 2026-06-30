@@ -283,11 +283,19 @@ def _notify(final_actions, mover_by_symbol):
 def _trade(final_actions, mover_by_symbol, cfg, mode, all_results):
     try:
         from src.runtime import BrokerRouter
+        from src.runtime.position_sizer import PositionSizer
         router = BrokerRouter(cfg)
         if not router.available:
             print("    No broker available — notify only, no orders.")
             return
         print(f"    Brokers firing on each signal: {', '.join(router.available)}")
+
+        # Shared position sizer — sizes orders off the live account equity.
+        sizer = PositionSizer(cfg)
+        fallback_eq = float(cfg.get("position_sizing", {}).get("fallback_equity", 100000))
+        equity = router.account_equity(default=fallback_eq)
+        bp = router.buying_power(default=equity)
+        print(f"    Sizing: method={sizer.method}, equity=${equity:,.0f}")
 
         for r in final_actions:
             sym = r["symbol"]
@@ -296,10 +304,16 @@ def _trade(final_actions, mover_by_symbol, cfg, mode, all_results):
             price = m.current if m and m.current else 0.0
             if not price:
                 continue
-            execs = router.execute(sym, action, quantity=1, price=price)
+            stop = (r.get("trade_plan") or {}).get("stop_loss_price", 0.0)
+            qty = sizer.size(equity, price, stop_loss=stop, strategy="intraday", buying_power=bp)
+            if qty <= 0:
+                print(f"    [{sym}] sized 0 shares — skipping")
+                continue
+            execs = router.execute(sym, action, quantity=qty, price=price)
             r["executions"] = execs
+            r["order_qty"] = qty
             for name, res in execs.items():
-                print(f"    [{name}] {action} {sym} @ {price:.2f} -> "
+                print(f"    [{name}] {action} {sym} x{qty} @ {price:.2f} -> "
                       f"{res.get('status')} ({res.get('order_id', '')})")
 
         # Reflect entries/exits in the US portfolio (reuse existing logic).

@@ -21,6 +21,7 @@ class BrokerRouter:
         self._config = config or {}
         self._logger = get_logger("BrokerRouter")
         self._executors: List[Tuple[str, Any]] = []
+        self._alpaca = None  # kept for account-equity queries (position sizing)
         self._build()
 
     # ------------------------------------------------------------------
@@ -52,6 +53,7 @@ class BrokerRouter:
                 alpaca = AlpacaBroker.from_credentials()
                 if alpaca.is_available():
                     self._executors.append(("alpaca", TradeExecutor(alpaca)))
+                    self._alpaca = alpaca
                 else:
                     self._logger.info("Alpaca unavailable (no keys in credentials.yaml).")
             except Exception as e:
@@ -64,6 +66,21 @@ class BrokerRouter:
     @property
     def available(self) -> List[str]:
         return [name for name, _ in self._executors]
+
+    def account_equity(self, default: float = 0.0) -> float:
+        """Live equity of the Alpaca account this router trades (for sizing)."""
+        if self._alpaca is not None:
+            eq = self._alpaca.get_account_equity()
+            if eq and eq > 0:
+                return eq
+        return default
+
+    def buying_power(self, default: float = 0.0) -> float:
+        if self._alpaca is not None:
+            bp = self._alpaca.get_buying_power()
+            if bp and bp > 0:
+                return bp
+        return default
 
     def execute(
         self,

@@ -78,6 +78,19 @@ swing:
   min_hold_gain_pct: 1.0        # required 1-month predicted gain (%) for a BUY
   order_qty: 1                  # shares per swing order (paper)
 
+# Position sizing — SHARED by intraday + swing so their P&L is comparable.
+# Switch `method` to "risk_based" later (before real money) for risk-managed sizing.
+position_sizing:
+  method: "risk_based"          # risk_based (ACTIVE) | percent_equity (disabled) | fixed_dollar
+  risk_per_trade_pct: 1.0       # risk 1% of equity per trade (sized by stop distance)
+  percent_equity_pct: 10.0      # (percent_equity) % of account equity per position
+  max_position_pct: 20.0        # hard cap: never exceed this % of equity in one name
+  default_stop_pct:             # fallback stop distance if a flow supplies no stop-loss
+    intraday: 2.0
+    swing: 8.0
+  fixed_dollar: 5000            # (fixed_dollar mode only)
+  fallback_equity: 100000       # used to size if the broker equity query fails
+
 # Brokers — every available one fires on each BUY/SELL (plus a Pushover ping).
 # Vested broker (buy/sell API layer)
 vested:

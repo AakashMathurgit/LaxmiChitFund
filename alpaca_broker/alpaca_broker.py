@@ -174,6 +174,40 @@ class AlpacaBroker(BrokerInterface):
             timestamp=timestamp,
         )
 
+    # ------------------------------------------------------------------
+    # Account info (for position sizing)
+    # ------------------------------------------------------------------
+
+    def _get_account(self) -> Dict[str, str]:
+        if not self.is_available():
+            return {}
+        try:
+            resp = requests.get(
+                f"{self._config.endpoint}/account",
+                headers=self._headers(),
+                timeout=self._config.timeout_secs,
+            )
+            if resp.status_code == 200:
+                return resp.json()
+            self._logger.debug(f"account fetch http {resp.status_code}")
+        except Exception as e:
+            self._logger.debug(f"account fetch failed: {e}")
+        return {}
+
+    def get_account_equity(self) -> float:
+        info = self._get_account()
+        try:
+            return float(info.get("equity", 0.0) or 0.0)
+        except (TypeError, ValueError):
+            return 0.0
+
+    def get_buying_power(self) -> float:
+        info = self._get_account()
+        try:
+            return float(info.get("buying_power", 0.0) or 0.0)
+        except (TypeError, ValueError):
+            return 0.0
+
     def get_order_status(self, order_id: str) -> str:
         if not order_id or not self.is_available():
             return "UNKNOWN"
