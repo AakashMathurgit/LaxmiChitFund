@@ -162,9 +162,13 @@ def cmd_schedule(rt, args):
     config = rt.config
 
     def _interval_for(f) -> int:
-        # Intraday cadence can be overridden by config.intraday.scan_interval_min.
+        # Intraday/swing cadence can be overridden by config.<flow>.scan_interval_min.
         if f.name == "us-intraday":
             mins = config.get("intraday", {}).get("scan_interval_min")
+            if mins:
+                return int(mins) * 60
+        if f.name == "us-swing":
+            mins = config.get("swing", {}).get("scan_interval_min")
             if mins:
                 return int(mins) * 60
         return _cadence_seconds(f.cadence, config)

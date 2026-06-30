@@ -262,7 +262,7 @@ def _notify(final_actions, mover_by_symbol):
         if not notifier.enabled:
             print("    Notifier not configured (set PUSHOVER_* env or credentials.yaml).")
             return
-        lines = ["<b>Intraday movers — actionable</b>"]
+        lines = ["<b>[INTRADAY] Movers — actionable</b>"]
         for r in final_actions:
             sym = r["symbol"]
             d = r["intraday_decision"]
@@ -274,7 +274,7 @@ def _notify(final_actions, mover_by_symbol):
                 f"{d['final_decision']} <b>{sym}</b> {chg} "
                 f"(conf {d['final_confidence']:.0%}) — {cross.get('explanation_type', '')}{driver}"
             )
-        sent = notifier.send("\n".join(lines), title="LCF Intraday Movers")
+        sent = notifier.send("\n".join(lines), title="[INTRADAY] LCF Movers")
         print(f"    Notify {'sent' if sent else 'skipped'} ({len(final_actions)} signals).")
     except Exception as e:
         print(f"    [WARN] Notify failed: {e}")

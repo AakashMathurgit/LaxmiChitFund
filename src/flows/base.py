@@ -85,10 +85,20 @@ class Flow(ABC):
     def _now(self) -> str:
         return datetime.now().isoformat()
 
-    def _run_script(self, rel_path: str, args: List[str], timeout: int = 900) -> int:
-        """Run an existing entry script in a subprocess (isolation)."""
+    def _run_script(self, rel_path: str, args: List[str], timeout: int = 900,
+                    env: Optional[Dict[str, str]] = None) -> int:
+        """Run an existing entry script in a subprocess (isolation).
+
+        `env` overrides are merged onto the current environment for that
+        subprocess only — used to route a flow at a specific broker account
+        (e.g. the swing flow gets the Account-2 Alpaca keys).
+        """
         cmd = [sys.executable, os.path.join(_LCF_ROOT, rel_path), *args]
-        proc = subprocess.run(cmd, cwd=_LCF_ROOT, timeout=timeout)
+        proc_env = None
+        if env:
+            proc_env = os.environ.copy()
+            proc_env.update({k: v for k, v in env.items() if v is not None})
+        proc = subprocess.run(cmd, cwd=_LCF_ROOT, timeout=timeout, env=proc_env)
         return proc.returncode
 
     @staticmethod

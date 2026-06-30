@@ -65,6 +65,73 @@ class IntradayUSFlow(Flow):
             return FlowResult(self.name, ts, ok=False, error=str(e))
 
 
+def _swing_account_env() -> Dict[str, str]:
+    """Resolve the SWING (Account-2) Alpaca keys and expose them to the swing
+    subprocess as the standard ALPACA_* vars, so AlpacaBroker trades Account 2.
+
+    Source order: ALPACA_SWING_* env (cloud secrets) -> credentials.yaml
+    `alpaca_swing:` (local). If neither is set, returns {} and the swing flow
+    falls back to the default account (with a warning logged by the broker).
+    """
+    key = os.environ.get("ALPACA_SWING_KEY_ID", "")
+    secret = os.environ.get("ALPACA_SWING_SECRET_KEY", "")
+    endpoint = os.environ.get("ALPACA_SWING_ENDPOINT", "")
+    if not (key and secret):
+        try:
+            import yaml
+            creds_path = os.path.join(_ROOT, "credentials.yaml")
+            if os.path.exists(creds_path):
+                with open(creds_path, "r", encoding="utf-8") as f:
+                    creds = yaml.safe_load(f) or {}
+                sw = creds.get("alpaca_swing", {}) or {}
+                key = key or sw.get("key_id", "")
+                secret = secret or sw.get("secret_key", "")
+                endpoint = endpoint or sw.get("endpoint", "")
+        except Exception:
+            pass
+    env: Dict[str, str] = {}
+    if key and secret:
+        env["ALPACA_KEY_ID"] = key
+        env["ALPACA_SECRET_KEY"] = secret
+        if endpoint:
+            env["ALPACA_ENDPOINT"] = endpoint
+    return env
+
+
+class USSwingFlow(Flow):
+    name = "us-swing"
+    horizon = "swing"
+    cadence = "30m"
+    market_hours_only = True
+
+    def run(self, rt: Any, **opts) -> FlowResult:
+        ts = self._now()
+        args = ["--mode", opts.get("mode", "value")]
+        if opts.get("top"):
+            args += ["--top", str(opts["top"])]
+        if opts.get("auto_trade") is False:
+            args.append("--no-auto-trade")
+        try:
+            # Route this subprocess at the SWING Alpaca account (Account 2).
+            rc = self._run_script("us_swing_tracker/run_us_swing.py", args,
+                                  timeout=1500, env=_swing_account_env())
+            data = self._load_json(os.path.join(_ROOT, "us_swing_tracker", "swing_results.json")) or {}
+            decisions = [
+                Decision(
+                    symbol=r.get("symbol", "?"),
+                    action=r.get("swing_decision", {}).get("final_decision", "HOLD"),
+                    confidence=float(r.get("swing_decision", {}).get("final_confidence", 0.0) or 0.0),
+                    horizon=self.horizon,
+                    detail=r.get("swing_decision", {}).get("note", ""),
+                )
+                for r in data.get("results", []) if "error" not in r and "swing_decision" in r
+            ]
+            return FlowResult(self.name, ts, ok=(rc == 0), decisions=decisions,
+                              summary=f"{data.get('buy_count', 0)} BUY / {data.get('sell_count', 0)} SELL")
+        except Exception as e:
+            return FlowResult(self.name, ts, ok=False, error=str(e))
+
+
 class USDailyFlow(Flow):
     name = "us-daily"
     horizon = "swing"

@@ -7,16 +7,19 @@ from typing import Dict, List
 from .base import Flow
 from .adapters import (
     IntradayUSFlow,
-    USDailyFlow,
+    USSwingFlow,
     INDailyFlow,
     PredictUSFlow,
     AdvisorFlow,
 )
 
+# Note: us-daily (USDailyFlow) was superseded by us-swing — a 100-stock,
+# prediction-driven funnel that trades a separate Alpaca account. The class
+# still exists in adapters.py but is intentionally not scheduled here.
 _FLOWS: Dict[str, Flow] = {
     f.name: f for f in [
         IntradayUSFlow(),
-        USDailyFlow(),
+        USSwingFlow(),
         INDailyFlow(),
         PredictUSFlow(),
         AdvisorFlow(),

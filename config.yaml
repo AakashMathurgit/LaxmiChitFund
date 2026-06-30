@@ -55,15 +55,28 @@ llm:
   temperature: 0.2
   max_tokens: 1024
 
-# US intraday fluctuation tracker
+# US intraday fluctuation tracker (immediate-profit strategy -> Alpaca Account 1)
 intraday:
-  scan_interval_min: 4          # loop cadence (minutes)
+  scan_interval_min: 1          # loop cadence (minutes) — scan every minute
   top_movers: 8                 # movers deep-analysed per cycle
   scan_interval_yf: "2m"        # yfinance interval for the cheap scan
   deep_interval_yf: "15m"       # yfinance interval for deep analysis of movers
   deep_period_yf: "5d"          # history window for deep analysis
   min_fluctuation_pct: 1.5      # min abs %% day change to qualify as a mover
   universe_file: "us_intraday_tracker/universe_us.yaml"
+
+# US swing tracker (multi-day hold strategy -> Alpaca Account 2)
+# Scans the same 100-stock universe but decides on a 1wk/1mo horizon using
+# fundamentals + news + the future-prediction agent.
+swing:
+  scan_interval_min: 30         # loop cadence (minutes) — evaluate every 30 min
+  top_candidates: 20            # candidates deep-analysed (prediction) per cycle
+  scan_interval_yf: "2m"        # yfinance interval for the cheap candidate scan
+  deep_interval_yf: "1d"        # daily bars for the multi-day prediction
+  deep_period_yf: "1y"          # 1 year of history for the swing thesis
+  min_confidence: 0.60          # min overall-outlook confidence to act
+  min_hold_gain_pct: 1.0        # required 1-month predicted gain (%) for a BUY
+  order_qty: 1                  # shares per swing order (paper)
 
 # Brokers — every available one fires on each BUY/SELL (plus a Pushover ping).
 # Vested broker (buy/sell API layer)
